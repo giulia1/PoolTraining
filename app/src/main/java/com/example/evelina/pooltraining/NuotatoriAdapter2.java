@@ -22,9 +22,6 @@ import java.util.ArrayList;
 public class NuotatoriAdapter2 extends BaseAdapter {
     private ArrayList<Nuotatori> array;
     private LayoutInflater inflater;
-    private ValueEventListener listenerNuotatori;
-    private final static String KEY_COGNOME = "cognome";
-    private final static String KEY_NOME = "nome";
 
     public NuotatoriAdapter2(Context context, ArrayList<Nuotatori> array) {
         this.array = array;
@@ -37,7 +34,7 @@ public class NuotatoriAdapter2 extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return array.get(position);
     }
 
     @Override
@@ -56,23 +53,5 @@ public class NuotatoriAdapter2 extends BaseAdapter {
         Nuotatori n = array.get(position);
         textCognomeNuotatore.setText(n.getCognomeNuotatore());
         textNomeNuotatore.setText(n.getNomeNuotatore());
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("nuotodatabase").child("Allenatori").child("CukUMqy9PEWIR9Mp8dsAoJnlyJs2").child("Nuotatori");
-        listenerNuotatori = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                array.clear();
-                for (DataSnapshot elemento : dataSnapshot.getChildren()) {
-                    Nuotatori nuotatore = new Nuotatori();
-                    nuotatore.setCognomeNuotatore(elemento.child(KEY_COGNOME).getValue(String.class));
-                    nuotatore.setNomeNuotatore(elemento.child(KEY_NOME).getValue(String.class));
-                    array.add(nuotatore);
-                }}
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-
-    public Object getItem(int position) {
-        return array.get(position);
-    }};
         return convertView;
-        }}
+    }}
