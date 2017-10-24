@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.evelina.pooltraining.MainActivity">
+
+
+    <Button
+        android:id="@+id/buttonAccedi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="78dp"
+        android:text="Accedi"
+        android:layout_above="@+id/buttonRegistrati"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="131dp"
+        android:layout_marginStart="131dp" />
+
+    <Button
+        android:id="@+id/buttonRegistrati"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/buttonAccedi"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/buttonAccedi"
+        android:layout_marginBottom="75dp"
+        android:text="Registrati" />
+
+    <TextView
+        android:id="@+id/textViewRegistrazione"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="38dp"
+        android:text="Non sei ancora registrato? Registrati!"
+        android:layout_above="@+id/buttonRegistrati"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/editTextMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="E-mail" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editTextMail"
+        android:layout_alignRight="@+id/editTextMail"
+        android:layout_below="@+id/editTextMail"
+        android:layout_marginTop="47dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Password" />
+</RelativeLayout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+ xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.evelina.pooltraining.RegisterActivity">
+
+    <EditText
+        android:id="@+id/editTextNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="47dp"
+        android:layout_above="@+id/editTextCognome"
+        android:layout_alignLeft="@+id/editTextCognome"
+        android:layout_alignStart="@+id/editTextCognome"
+        android:layout_marginBottom="37dp" />
+
+    <EditText
+        android:id="@+id/editTextCognome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Cognome"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="59dp"
+        tools:layout_editor_absoluteY="125dp"
+        android:layout_above="@+id/editTextMail2"
+        android:layout_alignLeft="@+id/editTextMail2"
+        android:layout_alignStart="@+id/editTextMail2"
+        android:layout_marginBottom="29dp" />
+
+    <EditText
+        android:id="@+id/editTextMail2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="E-mail"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="191dp"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/editTextPassword2"
+        android:layout_alignStart="@+id/editTextPassword2" />
+
+    <EditText
+        android:id="@+id/editTextPassword2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPersonName"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="296dp"
+        android:layout_above="@+id/buttonRegistrazione"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="47dp" />
+
+    <Button
+        android:id="@+id/buttonRegistrazione"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registrazione"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="385dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="74dp" />
+</RelativeLayout>

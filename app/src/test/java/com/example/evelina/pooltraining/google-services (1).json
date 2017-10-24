@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "952764239254",
+    "firebase_url": "https://nuotodatabase.firebaseio.com",
+    "project_id": "nuotodatabase",
+    "storage_bucket": "nuotodatabase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952764239254:android:2ddf624114da2ca7",
+        "android_client_info": {
+          "package_name": "com.example.evelina.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "952764239254-6llm7p22u1qsg6th41p8m8kslr8fmgqh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3CdjTc529dUpHesS_u89O-VJ1jGdbQVk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
