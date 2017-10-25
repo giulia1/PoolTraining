@@ -22,7 +22,12 @@
         <activity android:name=".ListaSettimana" />
         <activity android:name=".ListaEsercizi" />
         <activity android:name=".ListaNuotatori" />
-        <activity android:name=".DettaglioNuotatore"></activity>
+        <activity android:name=".DettaglioNuotatore" />
+        <activity
+            android:name=".ListaNuotatoriActivity"
+            android:label="@string/title_activity_lista_nuotatori"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AggiungiNuotatoreActivity"></activity>
     </application>
 
 </manifest>

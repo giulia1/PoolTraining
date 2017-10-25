@@ -8,7 +8,7 @@ public class Allenatori{
 
     private String nomeAllenatore;
     private String cognomeAllenatore;
-public Allenatori(){}
+    public Allenatori(){}
 
     public Allenatori(String nomeAllenatore,String cognomeAllenatore){
         this.nomeAllenatore=nomeAllenatore;

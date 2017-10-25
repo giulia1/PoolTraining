@@ -6,11 +6,19 @@
     android:layout_height="match_parent"
     tools:context="com.example.evelina.pooltraining.ListaNuotatori">
 
+    <Button
+        android:id="@+id/buttonAggiungi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        tools:layout_editor_absoluteX="295dp"
+        tools:layout_editor_absoluteY="445dp" />
+
     <ListView
         android:id="@+id/listaNuotatori"
         android:layout_width="272dp"
         android:layout_height="428dp"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="50dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -38,14 +38,15 @@ public class RegisterActivity extends AppCompatActivity {
         mail = (EditText) findViewById(R.id.editTextMail2);
         password = (EditText) findViewById(R.id.editTextPassword2);
         registrazione.setOnClickListener(new View.OnClickListener() {
-            String nome2 = nome.getText().toString().trim();
-            String cognome2 = cognome.getText().toString().trim();
+
             @Override
             public void onClick(View v) {
-                //    Nuotatore n = new Nuotatore(nome2, cognome2);
-                //  nuotoDatabase.addNuotatore(n);
+                String nome2 = nome.getText().toString().trim();
+                String cognome2 = cognome.getText().toString().trim();
                 String password2 = password.getText().toString().trim();
                 String mail2 = mail.getText().toString().trim();
+                Nuotatori n = new Nuotatori(nome2, cognome2);
+                 nuotoDatabase.addNuotatoreDB(n);
                 Log.v("Log", "onclick");
                 firebaseAuth.createUserWithEmailAndPassword(mail2, password2).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override

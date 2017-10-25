@@ -52,14 +52,14 @@ public class nuotoDatabase {
     }
 
 
-    public static String addNuotatore(Nuotatori n) {
+    public static String addNuotatoreDB(Nuotatori n) {
         String key = mDatabase.child(nuotatori).push().getKey();
         mDatabase.child(nuotatori).child(key).setValue(n);
         return key;
     }
 
     public static void addEsercizio(Esercizi esercizio, Nuotatori nuotatore) {//corretto addniuotatore(nuiotatore) al posto di getid?
-        mDatabase.child(nuotatori).child(addNuotatore(nuotatore)).child(esercizi).child(String.valueOf(esercizio.getGiornoSettimanaEsercizio())).child(esercizio.getNomeEsercizio()).child(vasche).child(String.valueOf(esercizio.getNumeroVascheEsercizio()));
+        mDatabase.child(nuotatori).child(addNuotatoreDB(nuotatore)).child(esercizi).child(String.valueOf(esercizio.getGiornoSettimanaEsercizio())).child(esercizio.getNomeEsercizio()).child(vasche).child(String.valueOf(esercizio.getNumeroVascheEsercizio()));
 
 
     }

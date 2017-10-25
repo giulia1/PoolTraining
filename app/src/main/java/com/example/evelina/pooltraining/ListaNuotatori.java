@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,6 +20,7 @@ public class ListaNuotatori extends AppCompatActivity {
     private ListView listaNuotatori;
     private String idAllenatore;
     private NuotatoriAdapter adapter;
+    private Button aggiungi;
 
     private final static String KEY_COGNOME = "cognome";
     private final static String KEY_NOME = "nome";
@@ -31,20 +33,12 @@ public class ListaNuotatori extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_nuotatori);
         mAuth = FirebaseAuth.getInstance();
-        idAllenatore=getIntent().getStringExtra("chiave");
-
-        // Comportamento differenziato
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user == null) {
-            // Utente non autenticato, voglio impedire l'accesso
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        } else {
-        }
+        idAllenatore = getIntent().getStringExtra("chiave");
 
         listaNuotatori = (ListView) findViewById(R.id.listaNuotatori);
+        aggiungi = (Button) findViewById(R.id.buttonAggiungi);
         adapter = new NuotatoriAdapter(this);
-        archivio.leggiNuotatori(idAllenatore,new nuotoDatabase.UpdateListenerN() {
+        archivio.leggiNuotatori(idAllenatore, new nuotoDatabase.UpdateListenerN() {
             @Override
             public void nuotatoriAggiornati() {
                 adapter.update(archivio.elencoNuotatori());
@@ -52,7 +46,16 @@ public class ListaNuotatori extends AppCompatActivity {
         });
 
         listaNuotatori.setAdapter(adapter);
+        aggiungi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent aggiungiNuotatori=new Intent(getApplicationContext(), AggiungiNuotatoreActivity.class);
+                startActivity(aggiungiNuotatori);
 
+
+
+            }
+        });
     }
     @Override
     protected void onDestroy() {
