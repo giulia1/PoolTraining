@@ -46,8 +46,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="72dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="E-mail" />
+        android:hint="E-Mail"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -58,6 +58,6 @@
         android:layout_below="@+id/editTextMail"
         android:layout_marginTop="47dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Password" />
+        android:hint="Password"
+        android:inputType="textPersonName" />
 </RelativeLayout>
