@@ -1,6 +1,8 @@
 package com.example.evelina.pooltraining;
+
+
 import android.util.Log;
-import android.provider.ContactsContract;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,11 +32,6 @@ public class nuotoDatabase {
 
     public nuotoDatabase() {
         listaArray = new ArrayList<>();
-        //mDatabase = FirebaseDatabase.getInstance().getReference();
-
-
-
-
     }
 
     public interface UpdateListener {

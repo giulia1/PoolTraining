@@ -1,13 +1,14 @@
 package com.example.evelina.pooltraining;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
 import org.w3c.dom.Text;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  */
 
 public class NuotatoriAdapter extends BaseAdapter {
-    List<Nuotatori> nuotatori = Collections.emptyList();
+    private List<Nuotatori> nuotatori = Collections.emptyList();
     private Context context;
 
     public NuotatoriAdapter(Context context) {
@@ -61,6 +62,4 @@ public class NuotatoriAdapter extends BaseAdapter {
 
         return convertView;
     }
-
-
 }
