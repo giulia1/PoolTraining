@@ -9,8 +9,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static android.content.ContentValues.TAG;
 
@@ -24,14 +23,14 @@ public class nuotoDatabase {
     private  final static String esercizi="Esercizi";
     private  final  static String vasche="vasche";
 
-    private ArrayList<Nuotatori> listaArray;
+    private ArrayList<Nuotatori> lista;
     private ValueEventListener listenerNuotatori;
     private static DatabaseReference mDatabase;
-    private final static String KEY_COGNOME = "cognome";
-    private final static String KEY_NOME = "nome";
+    private final static String KEY_COGNOME = "Cognome";
+    private final static String KEY_NOME = "Nome";
 
     public nuotoDatabase() {
-        listaArray = new ArrayList<>();
+        lista = new ArrayList<>();
     }
 
     public interface UpdateListener {
@@ -63,12 +62,12 @@ public class nuotoDatabase {
         listenerNuotatori = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                listaArray.clear();
+                lista.clear();
                 for (DataSnapshot elemento : dataSnapshot.getChildren()) {
                     Nuotatori nuotatore = new Nuotatori();
                     nuotatore.setCognomeNuotatore(elemento.child(KEY_COGNOME).getValue(String.class));
                     nuotatore.setNomeNuotatore(elemento.child(KEY_NOME).getValue(String.class));
-                    listaArray.add(nuotatore);
+                    lista.add(nuotatore);
                 }
                 notifica.nuotatoriAggiornati();
             }
@@ -91,7 +90,7 @@ public class nuotoDatabase {
             FirebaseDatabase.getInstance().getReference("Allenatori").child("CukUMqy9PEWIR9Mp8dsAoJnlyJs2").child("Nuotatori").removeEventListener(listenerNuotatori);
     }
         public List<Nuotatori> elencoNuotatori () {
-            return listaArray;
+            return lista;
         }
     }
 

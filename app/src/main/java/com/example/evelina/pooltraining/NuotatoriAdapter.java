@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 public class NuotatoriAdapter extends BaseAdapter {
-    private List<Nuotatori> nuotatori = Collections.emptyList();
+    private List<Nuotatori> nuotatori=Collections.emptyList();
     private Context context;
 
     public NuotatoriAdapter(Context context) {
