@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class ListaNuotatori extends AppCompatActivity {
 
     private ListView listaNuotatori;
-
+    private String idAllenatore;
     private NuotatoriAdapter adapter;
 
     private final static String KEY_COGNOME = "cognome";
@@ -31,6 +31,7 @@ public class ListaNuotatori extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_nuotatori);
         mAuth = FirebaseAuth.getInstance();
+        idAllenatore=getIntent().getStringExtra("chiave");
 
         // Comportamento differenziato
         FirebaseUser user = mAuth.getCurrentUser();
@@ -43,7 +44,7 @@ public class ListaNuotatori extends AppCompatActivity {
 
         listaNuotatori = (ListView) findViewById(R.id.listaNuotatori);
         adapter = new NuotatoriAdapter(this);
-        archivio.leggiNuotatori(new nuotoDatabase.UpdateListener() {
+        archivio.leggiNuotatori(idAllenatore,new nuotoDatabase.UpdateListenerN() {
             @Override
             public void nuotatoriAggiornati() {
                 adapter.update(archivio.elencoNuotatori());
@@ -56,7 +57,7 @@ public class ListaNuotatori extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        archivio.terminaOsservazioneNuotatori();
+        archivio.terminaOsservazioneNuotatori(idAllenatore);
     }
 }
 

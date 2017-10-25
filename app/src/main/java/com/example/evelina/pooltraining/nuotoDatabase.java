@@ -22,26 +22,35 @@ public class nuotoDatabase {
     private  final static String nuotatori="Nuotatori";
     private  final static String esercizi="Esercizi";
     private  final  static String vasche="vasche";
+    private  final static String nome="Nome";
 
-    private ArrayList<Nuotatori> lista;
+    private ArrayList<Nuotatori> listaNuotatori;
+    private ArrayList<Esercizi> listaEsercizi;
+
     private ValueEventListener listenerNuotatori;
+    private ValueEventListener listenerEsercizi;
+
     private static DatabaseReference mDatabase;
     private final static String KEY_COGNOME = "Cognome";
     private final static String KEY_NOME = "Nome";
 
     public nuotoDatabase() {
-        lista = new ArrayList<>();
+        listaNuotatori = new ArrayList<>();
+        listaEsercizi=new ArrayList<>();
     }
 
-    public interface UpdateListener {
+    public interface UpdateListenerN {
         void nuotatoriAggiornati();
     }
-
+    public interface UpdateListenerE {
+        void eserciziAggiornati();
+    }
     public static String addAllenatore(Allenatori a) { //restituisce id allenatore
         String key = mDatabase.child(allenatori).push().getKey();
         mDatabase.child(allenatori).child(key).setValue(a);
         return key;
     }
+
 
     public static String addNuotatore(Nuotatori n) {
         String key = mDatabase.child(nuotatori).push().getKey();
@@ -55,19 +64,20 @@ public class nuotoDatabase {
 
     }
 
-    public void leggiNuotatori(final UpdateListener notifica) {
+    public void leggiNuotatori(String idAllenatore, final UpdateListenerN notifica) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("Allenatori").child("CukUMqy9PEWIR9Mp8dsAoJnlyJs2").child("Nuotatori");
+        //bisogna implementare l impostazione automatica dell ID
+        DatabaseReference ref = database.getReference(allenatori).child(idAllenatore).child(nuotatori);
 
         listenerNuotatori = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                lista.clear();
+                listaNuotatori.clear();
                 for (DataSnapshot elemento : dataSnapshot.getChildren()) {
                     Nuotatori nuotatore = new Nuotatori();
                     nuotatore.setCognomeNuotatore(elemento.child(KEY_COGNOME).getValue(String.class));
                     nuotatore.setNomeNuotatore(elemento.child(KEY_NOME).getValue(String.class));
-                    lista.add(nuotatore);
+                    listaNuotatori.add(nuotatore);
                 }
                 notifica.nuotatoriAggiornati();
             }
@@ -85,14 +95,55 @@ public class nuotoDatabase {
 
 
     }
-    public void terminaOsservazioneNuotatori() {
+    public void terminaOsservazioneNuotatori(String idAllenatore) {
         if (listenerNuotatori != null)
-            FirebaseDatabase.getInstance().getReference("Allenatori").child("CukUMqy9PEWIR9Mp8dsAoJnlyJs2").child("Nuotatori").removeEventListener(listenerNuotatori);
+            FirebaseDatabase.getInstance().getReference(allenatori).child(idAllenatore).child(nuotatori).removeEventListener(listenerNuotatori);
     }
         public List<Nuotatori> elencoNuotatori () {
-            return lista;
+            return listaNuotatori;
         }
+
+    public void leggiEsercizi(String idNuotatore, int weekDay,final UpdateListenerE notifica) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference(nuotatori).child(idNuotatore).child(esercizi).child("1"); //fare il casting
+
+        listenerEsercizi = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                listaEsercizi.clear();
+                for (DataSnapshot elemento : dataSnapshot.getChildren()) {
+                    Esercizi esercizio = new Esercizi();
+                    esercizio.setNomeEsercizio(elemento.getValue(String.class));
+                    esercizio.setNumeroVascheEsercizio(elemento.child(vasche).getValue(Integer.class));
+                    listaEsercizi.add(esercizio);
+                }
+                notifica.eserciziAggiornati();
+            }
+
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.w(TAG, "Failed to read value.", error.toException());
+
+            }
+
+
+        };
+        ref.addValueEventListener(listenerEsercizi);
+
+
     }
+    public void terminaOsservazioneEsercizi(String idNuotatore) {
+        if (listenerEsercizi != null)
+            FirebaseDatabase.getInstance().getReference(nuotatori).child(idNuotatore).child(esercizi).child("1").removeEventListener(listenerNuotatori);
+    }
+    public List<Esercizi> elencoEsercizi () {
+        return listaEsercizi;
+    }
+}
+
+
+
 
 
 

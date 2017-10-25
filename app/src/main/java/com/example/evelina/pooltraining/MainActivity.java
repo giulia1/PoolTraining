@@ -22,12 +22,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG ="we" ;
+    private static final String TAG ="tag" ;
     private TextView textregistrazione;
     private Button accedi;
     private Button registrati;
     private EditText password;
     private EditText email;
+    private String uid;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -42,7 +43,16 @@ public class MainActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
+                    uid=user.getUid();
+                    //se sono nuotatore
+                    //Intent esercizi=new Intent(getApplicationContext(),ListaEsercizi.class);
+                    //esercizi.putExtra("chiave",uid);
+                    //se sono allenatore
+                    //Intent nuotatori=new Intent(getApplicationContext(),ListaNuotatori.class);
+                    //nuotatori.putExtra("chiave",uid);
                     // User is signed in
+                    Intent settimana = new Intent(getApplicationContext(), ListaSettimana.class);
+                    startActivity(settimana);
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
@@ -52,14 +62,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         };
-
-
-        if (mAuth.getCurrentUser() != null) {
-            finish();
-            Intent settimana = new Intent(getApplicationContext(), ListaSettimana.class);
-            startActivity(settimana);
-
-        }
 
         password = (EditText) findViewById(R.id.editTextPassword);
         email = (EditText) findViewById(R.id.editTextMail);
@@ -97,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
                     finish();
+                    //se sono un allenatore e faccio il login, vado alla lista nuotatori
                     Intent settimana = new Intent(getApplicationContext(), ListaNuotatori.class);
                     startActivity(settimana);
 

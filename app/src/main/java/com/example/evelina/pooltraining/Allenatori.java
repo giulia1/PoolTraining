@@ -5,27 +5,14 @@ package com.example.evelina.pooltraining;
  */
 
 public class Allenatori{
-    public void setNomeAllenatore(String nomeAllenatore) {
-        this.nomeAllenatore = nomeAllenatore;
-    }
-
-    public void setCognomeAllenatore(String cognomeAllenatore) {
-        this.cognomeAllenatore = cognomeAllenatore;
-    }
-
-
-
 
     private String nomeAllenatore;
     private String cognomeAllenatore;
-
+public Allenatori(){}
 
     public Allenatori(String nomeAllenatore,String cognomeAllenatore){
         this.nomeAllenatore=nomeAllenatore;
         this.cognomeAllenatore=cognomeAllenatore;
-
-
-
     }
 
     public String getNomeAllenatore(){
@@ -34,6 +21,12 @@ public class Allenatori{
     public String getCognomeAllenatore(){
         return cognomeAllenatore;
     }
+    public void setNomeAllenatore(String nomeAllenatore) {
+        this.nomeAllenatore = nomeAllenatore;
+    }
 
+    public void setCognomeAllenatore(String cognomeAllenatore) {
+        this.cognomeAllenatore = cognomeAllenatore;
+    }
 }
 

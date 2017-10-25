@@ -5,6 +5,18 @@ package com.example.evelina.pooltraining;
  */
 
 public class Esercizi {
+    private String nomeEsercizio;
+    private int giornoSettimanaEsercizio;
+    private int numeroVascheEsercizio;
+
+    public Esercizi(){}
+
+    public Esercizi(String nomeEsercizio, int giornoSettimanaEsercizio,int numeroVascheEsercizio){
+        this.nomeEsercizio=nomeEsercizio;
+        this.giornoSettimanaEsercizio=giornoSettimanaEsercizio;
+        this.numeroVascheEsercizio=numeroVascheEsercizio;
+    }
+
     public String getNomeEsercizio() {
         return nomeEsercizio;
     }
@@ -29,15 +41,7 @@ public class Esercizi {
         this.numeroVascheEsercizio = numeroVascheEsercizio;
     }
 
-    private String nomeEsercizio;
-    private int giornoSettimanaEsercizio;
-    private int numeroVascheEsercizio;
-public Esercizi(){}
-    public Esercizi(String nomeEsercizio, int giornoSettimanaEsercizio,int numeroVascheEsercizio){
-        this.nomeEsercizio=nomeEsercizio;
-        this.giornoSettimanaEsercizio=giornoSettimanaEsercizio;
-        this.numeroVascheEsercizio=numeroVascheEsercizio;
-    }
+
 
 }
 

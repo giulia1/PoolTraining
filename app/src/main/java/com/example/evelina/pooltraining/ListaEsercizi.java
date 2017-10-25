@@ -18,51 +18,46 @@ import java.util.ArrayList;
 
 public class ListaEsercizi extends AppCompatActivity {
     private ListView listaEsercizi;
+    private String idNuotatore;
+    private int weekday;
     private ArrayList<Esercizi> list;
-    private DatabaseReference ref;
-    private ArrayAdapter<Esercizi> adapter;
-    //private ValueEventListener listenerStudenti;
-    private final String esercizi="Esercizi";
-    private String UUID = "sII8wdAxfBWBgg0HBspchchPSDk1";
+
+    private EserciziAdapter adapter;
+
+    private nuotoDatabase archivio = new nuotoDatabase();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         int weekDay;
         setContentView(R.layout.activity_lista_esercizi);
-        Intent iin= getIntent();
-        Bundle b = iin.getExtras();
+        idNuotatore=getIntent().getStringExtra("chiave");
+        weekday=getIntent().getIntExtra("posizione",1);
+        listaEsercizi = (ListView) findViewById(R.id.listaEsercizi);
+        adapter = new EserciziAdapter(this);
 
-        if(b!=null)
-        {
-            int j =(int) b.get("posizione");
-            weekDay=j;
-        }
-        //list=new ArrayList<>();
         listaEsercizi=(ListView)findViewById(R.id.listaEsercizi);
-        adapter= new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
-        listaEsercizi.setAdapter(adapter);
-        ref=FirebaseDatabase.getInstance().getReference("Nuotatori").child("sII8wdAxfBWBgg0HBspchchPSDk1").child("Esercizi"); //metto id nuotatore?
-        ref.addValueEventListener(new ValueEventListener() {
+        adapter= new EserciziAdapter(this);
+        archivio.leggiEsercizi(idNuotatore, weekday,new nuotoDatabase.UpdateListenerE() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot data:dataSnapshot.getChildren()){
-                    Esercizi e=data.getValue(Esercizi.class);
-                    list.add(e);
-                }
-
-
-                }
-
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                //Log.w(TAG, "failed")
-
+            public void eserciziAggiornati() {
+                adapter.update(archivio.elencoEsercizi());
             }
         });
+
+        listaEsercizi.setAdapter(adapter);
+
+
+
+                }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        archivio.terminaOsservazioneNuotatori(idNuotatore);
     }
+
+
+
 }
 
 
