@@ -20,14 +20,10 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ListaSettimana" />
-        <activity android:name=".ListaEsercizi" />
+        <activity android:name=".ListaEserciziActivity" />
         <activity android:name=".ListaNuotatori" />
-        <activity android:name=".DettaglioNuotatore" />
-        <activity
-            android:name=".ListaNuotatoriActivity"
-            android:label="@string/title_activity_lista_nuotatori"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AggiungiNuotatoreActivity"></activity>
+        <activity android:name=".AggiungiNuotatoreActivity" />
+        <activity android:name=".AggiungiEserciziActivity"></activity>
     </application>
 
 </manifest>

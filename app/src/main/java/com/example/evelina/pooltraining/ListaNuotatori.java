@@ -2,6 +2,7 @@ package com.example.evelina.pooltraining;
 import android.content.ClipData;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,9 +19,10 @@ import com.google.firebase.auth.FirebaseUser;
 public class ListaNuotatori extends AppCompatActivity {
 
     private ListView listaNuotatori;
+    private FloatingActionButton aggiungi;
     private String idAllenatore;
     private NuotatoriAdapter adapter;
-    private Button aggiungi;
+
 
     private final static String KEY_COGNOME = "cognome";
     private final static String KEY_NOME = "nome";
@@ -34,9 +36,9 @@ public class ListaNuotatori extends AppCompatActivity {
         setContentView(R.layout.activity_lista_nuotatori);
         mAuth = FirebaseAuth.getInstance();
         idAllenatore = getIntent().getStringExtra("chiave");
+        aggiungi=(FloatingActionButton)findViewById(R.id.floatingActionButtonAggiungi) ;
 
         listaNuotatori = (ListView) findViewById(R.id.listaNuotatori);
-        aggiungi = (Button) findViewById(R.id.buttonAggiungi);
         adapter = new NuotatoriAdapter(this);
         archivio.leggiNuotatori(idAllenatore, new nuotoDatabase.UpdateListenerN() {
             @Override

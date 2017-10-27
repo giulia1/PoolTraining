@@ -16,14 +16,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 
-public class ListaEsercizi extends AppCompatActivity {
+public class ListaEserciziActivity extends AppCompatActivity {
     private ListView listaEsercizi;
     private String idNuotatore;
     private int weekday;
     private ArrayList<Esercizi> list;
-
     private EserciziAdapter adapter;
-
     private nuotoDatabase archivio = new nuotoDatabase();
 
 
@@ -38,7 +36,7 @@ public class ListaEsercizi extends AppCompatActivity {
 
         listaEsercizi=(ListView)findViewById(R.id.listaEsercizi);
         adapter= new EserciziAdapter(this);
-        archivio.leggiEsercizi(idNuotatore, weekday,new nuotoDatabase.UpdateListenerE() {
+        archivio.leggiEsercizi(idNuotatore, weekday, new nuotoDatabase.UpdateListenerE() {
             @Override
             public void eserciziAggiornati() {
                 adapter.update(archivio.elencoEsercizi());

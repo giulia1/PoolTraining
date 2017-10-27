@@ -23,7 +23,7 @@ public class ListaSettimana extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent esercizi=new Intent(getApplicationContext(), ListaNuotatori.class);
-                //esercizi.putExtra("posizione", position);
+                esercizi.putExtra("posizione", position);
                 startActivity(esercizi);
 
             }

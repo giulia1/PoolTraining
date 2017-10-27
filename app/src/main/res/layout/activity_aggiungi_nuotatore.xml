@@ -6,4 +6,18 @@
     android:layout_height="match_parent"
     tools:context="com.example.evelina.pooltraining.AggiungiNuotatoreActivity">
 
+    <ListView
+        android:id="@+id/listaNuotatoriLiberi"
+        android:layout_width="394dp"
+        android:layout_height="435dp"
+        tools:layout_editor_absoluteX="-5dp"
+        tools:layout_editor_absoluteY="60dp" />
+
+    <TextView
+        android:id="@+id/textViewAggiungiNuotatore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aggiungi un nuotatore"
+        tools:layout_editor_absoluteY="16dp"
+        tools:layout_editor_absoluteX="115dp" />
 </android.support.constraint.ConstraintLayout>

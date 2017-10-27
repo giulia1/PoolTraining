@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Logout();
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -45,14 +46,19 @@ public class MainActivity extends AppCompatActivity {
                 if (user != null) {
                     uid=user.getUid();
                     //se sono nuotatore
-                    //Intent esercizi=new Intent(getApplicationContext(),ListaEsercizi.class);
+                    //Intent esercizi=new Intent(getApplicationContext(),ListaEserciziActivity.class);
                     //esercizi.putExtra("chiave",uid);
-                    //se sono allenatore
-                    //Intent nuotatori=new Intent(getApplicationContext(),ListaNuotatori.class);
-                    //nuotatori.putExtra("chiave",uid);
+                    //Intent settimana = new Intent(getApplicationContext(), ListaSettimana.class);
+                    // startActivity(settimana);
+
+                    Intent nuotatori=new Intent(getApplicationContext(),ListaNuotatori.class);
+                    Intent aggiungiNuotatori=new Intent(getApplicationContext(), AggiungiNuotatoreActivity.class);
+                    nuotatori.putExtra("chiave",uid);
+                    aggiungiNuotatori.putExtra("chiave",uid);
+                    startActivity(nuotatori);
                     // User is signed in
-                    Intent settimana = new Intent(getApplicationContext(), ListaSettimana.class);
-                    startActivity(settimana);
+
+
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
@@ -98,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
 
                 if (task.isSuccessful()) {
-                    finish();
+                    //finish();
                     //se sono un allenatore e faccio il login, vado alla lista nuotatori
                     Intent settimana = new Intent(getApplicationContext(), ListaNuotatori.class);
                     startActivity(settimana);
@@ -108,6 +114,22 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+    public void Logout(){
+        mAuth.signOut();
 
     }
 }

@@ -45,16 +45,16 @@ public class RegisterActivity extends AppCompatActivity {
                 String cognome2 = cognome.getText().toString().trim();
                 String password2 = password.getText().toString().trim();
                 String mail2 = mail.getText().toString().trim();
-                Nuotatori n = new Nuotatori(nome2, cognome2);
-                 nuotoDatabase.addNuotatoreDB(n);
+
                 Log.v("Log", "onclick");
                 firebaseAuth.createUserWithEmailAndPassword(mail2, password2).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            Intent settimana = new Intent(getApplicationContext(), ListaSettimana.class);
-                            startActivity(settimana);
+
+                            Intent login = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(login);
                             //finish();
                             Toast.makeText(RegisterActivity.this, "Registrazione completata con successo", Toast.LENGTH_SHORT).show();
                         } else {
