@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/sfondo3"
     tools:context="com.example.evelina.pooltraining.MainActivity">
 
 
@@ -11,13 +13,10 @@
         android:id="@+id/buttonAccedi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="78dp"
-        android:text="Accedi"
-        android:layout_above="@+id/buttonRegistrati"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="131dp"
-        android:layout_marginStart="131dp" />
+        android:layout_above="@+id/textViewRegistrazione"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp"
+        android:text="Accedi" />
 
     <Button
         android:id="@+id/buttonRegistrati"
@@ -42,22 +41,25 @@
         android:id="@+id/editTextMail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="72dp"
+        android:layout_alignBottom="@+id/editTextPassword"
+        android:layout_alignLeft="@+id/editTextPassword"
+        android:layout_alignStart="@+id/editTextPassword"
+        android:layout_marginBottom="77dp"
         android:ems="10"
         android:hint="E-Mail"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColorLink="@color/colorPrimaryDark" />
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editTextMail"
-        android:layout_alignRight="@+id/editTextMail"
-        android:layout_below="@+id/editTextMail"
-        android:layout_marginTop="47dp"
+        android:layout_above="@+id/buttonAccedi"
+        android:layout_alignEnd="@+id/textViewRegistrazione"
+        android:layout_alignRight="@+id/textViewRegistrazione"
+        android:layout_marginBottom="37dp"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColorLink="@color/colorPrimaryDark" />
 </RelativeLayout>

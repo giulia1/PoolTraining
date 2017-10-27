@@ -5,62 +5,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/sfondo2"
     tools:context="com.example.evelina.pooltraining.RegisterActivity">
 
     <EditText
         android:id="@+id/editTextNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Nome"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="63dp"
-        tools:layout_editor_absoluteY="47dp"
         android:layout_above="@+id/editTextCognome"
         android:layout_alignLeft="@+id/editTextCognome"
         android:layout_alignStart="@+id/editTextCognome"
-        android:layout_marginBottom="37dp" />
+        android:layout_marginBottom="37dp"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="textPersonName"
+        android:textColorLink="@color/colorPrimaryDark"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="47dp" />
 
     <EditText
         android:id="@+id/editTextCognome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Cognome"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="125dp"
         android:layout_above="@+id/editTextMail2"
         android:layout_alignLeft="@+id/editTextMail2"
         android:layout_alignStart="@+id/editTextMail2"
-        android:layout_marginBottom="29dp" />
+        android:layout_marginBottom="29dp"
+        android:ems="10"
+        android:hint="Cognome"
+        android:inputType="textPersonName"
+        android:textColorLink="@color/colorPrimaryDark"
+        tools:layout_editor_absoluteX="59dp"
+        tools:layout_editor_absoluteY="125dp" />
 
     <EditText
         android:id="@+id/editTextMail2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextPassword2"
+        android:layout_alignStart="@+id/editTextPassword2"
+        android:layout_centerVertical="true"
         android:ems="10"
         android:hint="E-mail"
         android:inputType="textPersonName"
+        android:textColorLink="@color/colorPrimaryDark"
         tools:layout_editor_absoluteX="63dp"
-        tools:layout_editor_absoluteY="191dp"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/editTextPassword2"
-        android:layout_alignStart="@+id/editTextPassword2" />
+        tools:layout_editor_absoluteY="191dp" />
 
     <EditText
         android:id="@+id/editTextPassword2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonRegistrazione"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="47dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPersonName"
+        android:textColorLink="@color/colorPrimaryDark"
         android:visibility="visible"
         tools:layout_editor_absoluteX="63dp"
-        tools:layout_editor_absoluteY="296dp"
-        android:layout_above="@+id/buttonRegistrazione"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="47dp" />
+        tools:layout_editor_absoluteY="296dp" />
 
     <Button
         android:id="@+id/buttonRegistrazione"
