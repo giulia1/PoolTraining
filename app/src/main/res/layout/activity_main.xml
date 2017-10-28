@@ -14,8 +14,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textViewRegistrazione"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="23dp"
+        android:layout_alignEnd="@+id/textViewRegistrazione"
+        android:layout_alignRight="@+id/textViewRegistrazione"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginRight="54dp"
+        android:background="@color/colorAccent"
         android:text="Accedi" />
 
     <Button
@@ -26,7 +30,15 @@
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/buttonAccedi"
         android:layout_marginBottom="75dp"
-        android:text="Registrati" />
+        android:background="?android:attr/colorControlActivated"
+        android:drawableBottom="@color/common_google_signin_btn_text_dark_default"
+        android:drawableEnd="@color/common_google_signin_btn_text_dark_default"
+        android:drawableLeft="@color/common_google_signin_btn_text_dark_default"
+        android:text="Registrati"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textColorHighlight="@android:color/holo_purple"
+        android:textColorHint="@android:color/holo_orange_light"
+        android:textColorLink="@color/common_google_signin_btn_text_dark_default" />
 
     <TextView
         android:id="@+id/textViewRegistrazione"
