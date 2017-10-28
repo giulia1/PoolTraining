@@ -19,6 +19,8 @@ import java.util.List;
 public class NuotatoriAdapter extends BaseAdapter {
     private List<Nuotatori> nuotatori=Collections.emptyList();
     private Context context;
+    private String nome;
+    private String cognome;
 
     public NuotatoriAdapter(Context context) {
         this.context=context;
@@ -44,6 +46,8 @@ public class NuotatoriAdapter extends BaseAdapter {
         nuotatori = newList;
         notifyDataSetChanged();
     }
+    public String getNome(int position){return nome;}
+    public String getCognome(int position){return cognome;}
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -52,6 +56,8 @@ public class NuotatoriAdapter extends BaseAdapter {
 
         TextView textNomeNuotatore = (TextView)convertView.findViewById(R.id.textViewNomeNuotatore);
         TextView textCognomeNuotatore = (TextView)convertView.findViewById(R.id.textViewCognomeNuotatore);
+        nome=textNomeNuotatore.getText().toString();
+        cognome=textCognomeNuotatore.getText().toString();
 
 
         // Imposto i valori da visualizzare
