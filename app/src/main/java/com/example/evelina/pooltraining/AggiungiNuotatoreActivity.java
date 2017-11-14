@@ -3,6 +3,7 @@ package com.example.evelina.pooltraining;
         import android.content.Intent;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
+        import android.util.Log;
         import android.view.View;
         import android.widget.AdapterView;
         import android.widget.Button;
@@ -22,19 +23,19 @@ public class AggiungiNuotatoreActivity extends AppCompatActivity {
 
     private ListView listaNuotatoriLiberi;
     private TextView aggiunta;
-    private NuotatoriLiberiAdapter adapter;
+    private NuotatoriAdapter adapter;
     private nuotoDatabase archivio = new nuotoDatabase();
     private final static String idNull = "null";
     private String idAllenatore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aggiungi_nuotatore);
-        aggiunta=(TextView)findViewById(R.id.textViewAggiungiNuotatore);
         idAllenatore=getIntent().getStringExtra("chiave");
         listaNuotatoriLiberi = (ListView) findViewById(R.id.listaNuotatoriLiberi);
-        adapter = new NuotatoriLiberiAdapter(this);
+        adapter = new NuotatoriAdapter(this);
         archivio.leggiNuotatoriLiberi(new nuotoDatabase.UpdateListenerNL() {
             @Override
             public void nuotatoriLiberiAggiornati() {
@@ -46,6 +47,7 @@ public class AggiungiNuotatoreActivity extends AppCompatActivity {
         listaNuotatoriLiberi.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
 
                 String nome=adapter.getNome(position);
                 String cognome=adapter.getCognome(position);

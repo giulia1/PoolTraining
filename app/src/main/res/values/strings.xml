@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">PoolTraining</string>
+    <string name="app_name">Pool Training</string>
     <string name="title_activity_lista_nuotatori">ListaNuotatoriActivity</string>
 </resources>

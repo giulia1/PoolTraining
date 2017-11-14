@@ -190,7 +190,7 @@ public class nuotoDatabase {
                 listaNuotatoriLiberi.clear();
                 for (DataSnapshot elemento : dataSnapshot.getChildren()) {
 
-                    if(elemento.child(KEY_ID_ALLENATORE).getValue(String.class)=="senzaallenatore"){
+                    if(elemento.child(KEY_ID_ALLENATORE).getValue(String.class).equals("senzaallenatore")){
                         Nuotatori nuotatore = new Nuotatori();
                     nuotatore.setCognomeNuotatore(elemento.child(KEY_COGNOME).getValue(String.class));
                     nuotatore.setNomeNuotatore(elemento.child(KEY_NOME).getValue(String.class));

@@ -24,7 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText cognome;
     private EditText mail;
     private EditText password;
-
+    private nuotoDatabase archivio = new nuotoDatabase();
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -45,14 +45,14 @@ public class RegisterActivity extends AppCompatActivity {
                 String cognome2 = cognome.getText().toString().trim();
                 String password2 = password.getText().toString().trim();
                 String mail2 = mail.getText().toString().trim();
+                Allenatori a=new Allenatori(nome2,cognome2);
 
                 Log.v("Log", "onclick");
                 firebaseAuth.createUserWithEmailAndPassword(mail2, password2).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
-
+                            //archivio.addAllenatore(a);
                             Intent login = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(login);
                             //finish();

@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/img1177"
     tools:context="com.example.evelina.pooltraining.ListaNuotatori">
 
     <ListView
@@ -12,24 +13,40 @@
         android:layout_width="272dp"
         android:layout_height="428dp"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="16dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButtonAggiungi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
 
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/listaNuotatori"
-        android:layout_marginEnd="29dp"
-        android:layout_marginRight="29dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
         android:clickable="true"
         app:backgroundTint="@android:color/holo_blue_dark"
+        app:elevation="0dp"
         app:fabSize="mini"
         app:srcCompat="@android:drawable/ic_input_add"
         tools:layout_editor_absoluteX="328dp"
-        tools:layout_editor_absoluteY="455dp" />
+        tools:layout_editor_absoluteY="455dp"
+        android:layout_alignBottom="@+id/listaNuotatori"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/listaNuotatori"
+        android:layout_alignEnd="@+id/listaNuotatori"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/listaNuotatori"
+        android:text="I MIEI NUOTATORI"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse" />
 
 </RelativeLayout>

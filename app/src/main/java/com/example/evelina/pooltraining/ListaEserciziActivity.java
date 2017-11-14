@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 
 public class ListaEserciziActivity extends AppCompatActivity {
+
     private ListView listaEsercizi;
     private String idNuotatore;
     private int weekday;
