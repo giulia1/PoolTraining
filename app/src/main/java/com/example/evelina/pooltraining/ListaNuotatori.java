@@ -36,7 +36,7 @@ public class ListaNuotatori extends AppCompatActivity {
         setContentView(R.layout.activity_lista_nuotatori);
         mAuth = FirebaseAuth.getInstance();
         idAllenatore = getIntent().getStringExtra("chiave");
-        aggiungi=(FloatingActionButton)findViewById(R.id.floatingActionButtonAggiungi) ;
+        aggiungi = (FloatingActionButton) findViewById(R.id.floatingActionButtonAggiungi);
 
         listaNuotatori = (ListView) findViewById(R.id.listaNuotatori);
         adapter = new NuotatoriAdapter(this);
@@ -48,21 +48,31 @@ public class ListaNuotatori extends AppCompatActivity {
         });
 
         listaNuotatori.setAdapter(adapter);
-        aggiungi.setOnClickListener(new View.OnClickListener() {
+        listaNuotatori.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent aggiungiNuotatori=new Intent(getApplicationContext(), AggiungiNuotatoreActivity.class);
-                startActivity(aggiungiNuotatori);
-
-
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String nomeNuotatore=adapter.getNome(position);
+                String cognomeNuotatore=adapter.getCognome(position);
+                String idNuotatore=archivio.restituisciId(nomeNuotatore,cognomeNuotatore);
+                Intent aggiungiEsercizi = new Intent(getApplicationContext(), AggiungiEserciziActivity.class);
+                aggiungiEsercizi.putExtra("nomeNuotatore", nomeNuotatore);
+                aggiungiEsercizi.putExtra("cognomeNuotatore", cognomeNuotatore);
+                aggiungiEsercizi.putExtra("idNuotatore",idNuotatore);
+                startActivity(aggiungiEsercizi);
 
             }
         });
-    }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        archivio.terminaOsservazioneNuotatori(idAllenatore);
+        aggiungi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent aggiungiNuotatori = new Intent(getApplicationContext(), AggiungiNuotatoreActivity.class);
+                startActivity(aggiungiNuotatori);
+
+
+            }
+
+            ;
+        });
     }
 }
 
