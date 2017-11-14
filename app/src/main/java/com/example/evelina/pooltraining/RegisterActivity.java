@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            //archivio.addAllenatore(a);
+                            //a                          rchivio.addAllenatore(a);
                             Intent login = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(login);
                             //finish();
