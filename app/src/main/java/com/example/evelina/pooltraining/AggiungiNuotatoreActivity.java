@@ -27,6 +27,8 @@ public class AggiungiNuotatoreActivity extends AppCompatActivity {
     private nuotoDatabase archivio = new nuotoDatabase();
     private final static String idNull = "null";
     private String idAllenatore;
+    private String nome;
+    private String cognome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +50,11 @@ public class AggiungiNuotatoreActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-
-                String nome=adapter.getNome(position);
-                String cognome=adapter.getCognome(position);
-                Nuotatori n=new Nuotatori(nome,cognome, idNull);
-                String idNuotatore=archivio.restituisciId(nome,cognome);
+                listaNuotatoriLiberi.getItemAtPosition(position);
+                nome=archivio.nomiNuotatoriLiberi.get(position);
+                cognome=archivio.cognomiNuotatoriLiberi.get(position);
+                Nuotatori n=new Nuotatori(nome,cognome);
+                String idNuotatore=archivio.idNuotatoriLiberi.get(position);
                 archivio.addNuotatoreLista(n,idAllenatore, idNuotatore);
             }
         });

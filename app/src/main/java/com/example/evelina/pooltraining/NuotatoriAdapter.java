@@ -17,14 +17,14 @@ import java.util.List;
  */
 
 public class NuotatoriAdapter extends BaseAdapter {
+
     private List<Nuotatori> nuotatori=Collections.emptyList();
     private Context context;
+     public String nome;
+    public   String cognome;
 
     public NuotatoriAdapter(Context context) {
         this.context=context;
-        
-
-
     }
     @Override
     public int getCount() {
@@ -34,6 +34,13 @@ public class NuotatoriAdapter extends BaseAdapter {
     @Override
     public Object getItem(int position) {
         return nuotatori.get(position);
+    }
+
+    public String getNome(int position){
+        return nome;
+    }
+    public String getCognome(int position){
+        return cognome;
     }
 
     @Override
@@ -58,6 +65,8 @@ public class NuotatoriAdapter extends BaseAdapter {
         Nuotatori nuotatore = nuotatori.get(position);
         textCognomeNuotatore.setText(nuotatore.getCognomeNuotatore());
         textNomeNuotatore.setText(nuotatore.getNomeNuotatore());
+        nome=textNomeNuotatore.getText().toString();
+        cognome=textCognomeNuotatore.getText().toString();
 
 
         return convertView;

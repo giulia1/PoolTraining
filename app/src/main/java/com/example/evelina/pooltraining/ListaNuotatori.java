@@ -32,9 +32,9 @@ public class ListaNuotatori extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_nuotatori);
-        mAuth = FirebaseAuth.getInstance();
         idAllenatore = getIntent().getStringExtra("chiave");
         aggiungi = (FloatingActionButton) findViewById(R.id.floatingActionButtonAggiungi);
 
@@ -51,12 +51,9 @@ public class ListaNuotatori extends AppCompatActivity {
         listaNuotatori.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String nomeNuotatore=adapter.getNome(position);
-                String cognomeNuotatore=adapter.getCognome(position);
-                String idNuotatore=archivio.restituisciId(nomeNuotatore,cognomeNuotatore);
-                Intent aggiungiEsercizi = new Intent(getApplicationContext(), AggiungiEserciziActivity.class);
-                aggiungiEsercizi.putExtra("nomeNuotatore", nomeNuotatore);
-                aggiungiEsercizi.putExtra("cognomeNuotatore", cognomeNuotatore);
+
+                String idNuotatore=archivio.idNuotatori.get(position);
+                Intent aggiungiEsercizi = new Intent(getApplicationContext(), LunActivity.class);
                 aggiungiEsercizi.putExtra("idNuotatore",idNuotatore);
                 startActivity(aggiungiEsercizi);
 
@@ -65,6 +62,7 @@ public class ListaNuotatori extends AppCompatActivity {
         aggiungi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //dopo riettereactivity aggiunginuotatori
                 Intent aggiungiNuotatori = new Intent(getApplicationContext(), AggiungiNuotatoreActivity.class);
                 startActivity(aggiungiNuotatori);
 

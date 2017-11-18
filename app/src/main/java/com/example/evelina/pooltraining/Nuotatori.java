@@ -7,13 +7,19 @@ import java.io.Serializable;
  */
 
 public class Nuotatori implements Serializable {
+
     private String nomeNuotatore;
     private String cognomeNuotatore;
     private String idAllenatore;
 
+    public Nuotatori(String nome, String cognome){
+        this.nomeNuotatore=nome;
+        this.cognomeNuotatore=cognome;
+    }
     public Nuotatori(){}
 
     public Nuotatori(String nomeNuotatore,String cognomeNuotatore,String idAllenatore){
+
         this.nomeNuotatore=nomeNuotatore;
         this.cognomeNuotatore=cognomeNuotatore;
         this.idAllenatore=idAllenatore;

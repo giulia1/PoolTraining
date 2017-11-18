@@ -18,15 +18,20 @@ import static android.content.ContentValues.TAG;
  */
 
 public class nuotoDatabase {
+
     private  final static String allenatori="Allenatori";
     private  final static String nuotatori="Nuotatori";
     private  final static String esercizi="Esercizi";
     private  final  static String vasche="vasche";
-    private  final static String nome="Nome";
 
     private ArrayList<Nuotatori> listaNuotatori;
     private ArrayList<Esercizi> listaEsercizi;
     private ArrayList<Nuotatori> listaNuotatoriLiberi;
+     ArrayList<String> idNuotatoriLiberi;
+    ArrayList<String> idNuotatori;
+    ArrayList<String> nomiNuotatoriLiberi;
+    ArrayList<String> cognomiNuotatoriLiberi;
+
 
     private ValueEventListener listenerNuotatori;
     private ValueEventListener listenerNuotatoriLiberi;
@@ -41,9 +46,14 @@ public class nuotoDatabase {
 
 
     public nuotoDatabase() {
+
         listaNuotatori = new ArrayList<>();
         listaEsercizi=new ArrayList<>();
         listaNuotatoriLiberi=new ArrayList<>();
+        idNuotatoriLiberi=new ArrayList<>();
+        idNuotatori=new ArrayList<>();
+        nomiNuotatoriLiberi=new ArrayList<>();
+        cognomiNuotatoriLiberi=new ArrayList<>();
     }
 
     public interface UpdateListenerN {
@@ -56,6 +66,7 @@ public class nuotoDatabase {
         void nuotatoriLiberiAggiornati();
     }
     public static String addAllenatore(Allenatori a) { //restituisce id allenatore
+
         String key = mDatabase.child(allenatori).push().getKey();
         mDatabase.child(allenatori).child(key).setValue(a);
         return key;
@@ -63,49 +74,26 @@ public class nuotoDatabase {
 
 
     public static String addNuotatoreDB(Nuotatori n) {
+
         String key = mDatabase.child(nuotatori).push().getKey();
         mDatabase.child(nuotatori).child(key).setValue(n);
         return key;
     }
 
     public static void addNuotatoreLista(Nuotatori n, String idAllenatore, String idNuotatore) {
+
         mDatabase.child(allenatori).child(idAllenatore).child(nuotatori).child(idNuotatore).setValue(n);
         mDatabase.child(nuotatori).child(idNuotatore).child(KEY_ID_ALLENATORE).setValue(idAllenatore);
 
     }
 
-    public static void addEsercizio(Esercizi esercizio, Nuotatori nuotatore) {//corretto addniuotatore(nuiotatore) al posto di getid?
-        mDatabase.child(nuotatori).child(addNuotatoreDB(nuotatore)).child(esercizi).child(String.valueOf(esercizio.getGiornoSettimanaEsercizio())).child(esercizio.getNomeEsercizio()).child(vasche).child(String.valueOf(esercizio.getNumeroVascheEsercizio()));
-    }
-    public String restituisciId(final String nome, final String cognome) {
-       final String id;
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference(nuotatori);
+    public static void addEsercizio( String idNuotatore, String giorno,int nVasche, String nome) {//corretto addniuotatore(nuiotatore) al posto di getid?
 
-        listener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for (DataSnapshot elemento : dataSnapshot.getChildren()) {
-                    if (elemento.child(KEY_NOME).getValue(String.class) == nome && elemento.child(KEY_COGNOME).getValue(String.class) == cognome) {
-                        idNuotatore = elemento.getKey();
-                    }
-                }
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        };
-       return idNuotatore;
+        mDatabase.child(nuotatori).child(idNuotatore).child(esercizi).child(giorno).child(nome).child(vasche).setValue(nVasche);
     }
 
             public void leggiNuotatori(String idAllenatore, final UpdateListenerN notifica) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        //bisogna implementare l impostazione automatica dell ID
         DatabaseReference ref = database.getReference(allenatori).child(idAllenatore).child(nuotatori);
 
         listenerNuotatori = new ValueEventListener() {
@@ -117,6 +105,7 @@ public class nuotoDatabase {
                     nuotatore.setCognomeNuotatore(elemento.child(KEY_COGNOME).getValue(String.class));
                     nuotatore.setNomeNuotatore(elemento.child(KEY_NOME).getValue(String.class));
                     listaNuotatori.add(nuotatore);
+                    idNuotatori.add(elemento.getKey());
                 }
                 notifica.nuotatoriAggiornati();
             }
@@ -181,21 +170,24 @@ public class nuotoDatabase {
     }
 
     public void leggiNuotatoriLiberi(final UpdateListenerNL notifica) {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference(nuotatori);
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = (DatabaseReference) database.getReference(nuotatori);
         listenerNuotatoriLiberi= new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 listaNuotatoriLiberi.clear();
                 for (DataSnapshot elemento : dataSnapshot.getChildren()) {
+                    if(elemento.child(KEY_ID_ALLENATORE).getValue(String.class).equals("null")) {
 
-                    if(elemento.child(KEY_ID_ALLENATORE).getValue(String.class).equals("senzaallenatore")){
                         Nuotatori nuotatore = new Nuotatori();
-                    nuotatore.setCognomeNuotatore(elemento.child(KEY_COGNOME).getValue(String.class));
-                    nuotatore.setNomeNuotatore(elemento.child(KEY_NOME).getValue(String.class));
-                    listaNuotatoriLiberi.add(nuotatore);
-                }
+                        nuotatore.setCognomeNuotatore(elemento.child(KEY_COGNOME).getValue(String.class));
+                        nuotatore.setNomeNuotatore(elemento.child(KEY_NOME).getValue(String.class));
+                        idNuotatoriLiberi.add(elemento.getKey());
+                        nomiNuotatoriLiberi.add(elemento.child(KEY_NOME).getValue(String.class));
+                        cognomiNuotatoriLiberi.add(elemento.child(KEY_COGNOME).getValue(String.class));
+                        listaNuotatoriLiberi.add(nuotatore);
+                    }
                 }
                 notifica.nuotatoriLiberiAggiornati();
             }

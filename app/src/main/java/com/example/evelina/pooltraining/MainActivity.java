@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
+
     private static final String TAG ="tag" ;
     private TextView textregistrazione;
     private Button accedi;
@@ -106,10 +107,18 @@ public class MainActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     //finish();
                     //se sono un allenatore e faccio il login, vado alla lista nuotatori
-                    Intent settimana = new Intent(getApplicationContext(), ListaNuotatori.class);
-                    startActivity(settimana);
+                    Intent listaNuotatori=new Intent(getApplicationContext(),ListaNuotatori.class);
+                    listaNuotatori.putExtra("chiave",uid);
+                    startActivity(listaNuotatori);
 
                 }
+                else{
+
+                        Log.w(TAG, "signInWithEmail:failed", task.getException());
+                    Toast.makeText(MainActivity.this, "errore", Toast.LENGTH_SHORT).show();
+
+                }
+
 
 
             }

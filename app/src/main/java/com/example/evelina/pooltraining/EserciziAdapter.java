@@ -46,7 +46,7 @@ public class EserciziAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.riga_nuotatore, parent, false);
 
         TextView nomeEsercizio = (TextView)convertView.findViewById(R.id.textViewNomeEsercizio);
-        TextView numeroVasche  = (TextView)convertView.findViewById(R.id.textViewNVasche);
+        TextView numeroVasche  = (TextView)convertView.findViewById(R.id.textViewNVascheAggiunte);
 
 
         // Imposto i valori da visualizzare
