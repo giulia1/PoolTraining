@@ -1,5 +1,6 @@
 package com.example.evelina.pooltraining;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,13 +13,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class LunActivity extends AppCompatActivity {
+public class LunActivity extends Activity {
 
     private FloatingActionButton aggiungi;
     final Context context = this;
     private Button annullaEsercizio;
     private Button aggiungiEsercizio;
-    private nuotoDatabase archivio;
+    private nuotoDatabase  archivio = new nuotoDatabase();
     private EditText nomeEsercizioAggiunto;
     private EditText numeroVascheAggiunte;
     private String nomeEsercizio;
@@ -27,13 +28,16 @@ public class LunActivity extends AppCompatActivity {
     private int nVasche;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lun);
-        archivio = new nuotoDatabase();
-        idNuotatore = getIntent().getStringExtra("idNuotatore");
+        Bundle datipassati = getIntent().getExtras();
+        idNuotatore = datipassati.getString("idNuotatore");
+
+        //dNuotatore = getIntent().getStringExtra("idNuotatore");
         aggiungi = (FloatingActionButton) findViewById(R.id.buttonAggiungiEsercizio);
 
 

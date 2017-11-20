@@ -23,6 +23,12 @@
         <activity android:name=".ListaEserciziActivity" />
         <activity android:name=".ListaNuotatori" />
         <activity android:name=".AggiungiNuotatoreActivity" />
+        <activity android:name=".LunActivity" />
+        <activity android:name=".MarActivity" />
+        <activity android:name=".MerActivity" />
+        <activity android:name=".GioActivity" />
+        <activity android:name=".VenActivity" />
+        <activity android:name=".SabActivity" />
         <activity android:name=".AggiungiEserciziActivity"></activity>
     </application>
 

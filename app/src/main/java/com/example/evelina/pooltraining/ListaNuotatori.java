@@ -53,7 +53,7 @@ public class ListaNuotatori extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 String idNuotatore=archivio.idNuotatori.get(position);
-                Intent aggiungiEsercizi = new Intent(getApplicationContext(), LunActivity.class);
+                Intent aggiungiEsercizi = new Intent(getApplicationContext(), AggiungiEserciziActivity.class);
                 aggiungiEsercizi.putExtra("idNuotatore",idNuotatore);
                 startActivity(aggiungiEsercizi);
 

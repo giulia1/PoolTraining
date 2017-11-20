@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                     //Intent settimana = new Intent(getApplicationContext(), ListaSettimana.class);
                     // startActivity(settimana);
 
-                    Intent nuotatori=new Intent(getApplicationContext(),ListaNuotatori.class);
+                    Intent nuotatori=new Intent(getApplicationContext(), ListaNuotatori.class);
                     Intent aggiungiNuotatori=new Intent(getApplicationContext(), AggiungiNuotatoreActivity.class);
                     nuotatori.putExtra("chiave",uid);
                     aggiungiNuotatori.putExtra("chiave",uid);
@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
 
                 if (task.isSuccessful()) {
+
                     //finish();
                     //se sono un allenatore e faccio il login, vado alla lista nuotatori
                     Intent listaNuotatori=new Intent(getApplicationContext(),ListaNuotatori.class);

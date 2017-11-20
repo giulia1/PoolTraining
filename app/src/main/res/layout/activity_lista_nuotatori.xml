@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img1177"
+    android:background="@color/colorAccent"
     tools:context="com.example.evelina.pooltraining.ListaNuotatori">
 
     <ListView
@@ -16,7 +16,9 @@
         tools:layout_editor_absoluteY="16dp"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButtonAggiungi"

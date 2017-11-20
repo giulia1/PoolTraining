@@ -80,9 +80,10 @@ public class nuotoDatabase {
         return key;
     }
 
-    public static void addNuotatoreLista(Nuotatori n, String idAllenatore, String idNuotatore) {
+    public static void addNuotatoreLista(String nome, String cognome, String idAllenatore, String idNuotatore) {
 
-        mDatabase.child(allenatori).child(idAllenatore).child(nuotatori).child(idNuotatore).setValue(n);
+        mDatabase.child(allenatori).child(idAllenatore).child(nuotatori).child(idNuotatore).child(KEY_NOME).setValue(nome);
+        mDatabase.child(allenatori).child(idAllenatore).child(nuotatori).child(idNuotatore).child(KEY_COGNOME).setValue(cognome);
         mDatabase.child(nuotatori).child(idNuotatore).child(KEY_ID_ALLENATORE).setValue(idAllenatore);
 
     }
@@ -183,10 +184,11 @@ public class nuotoDatabase {
                         Nuotatori nuotatore = new Nuotatori();
                         nuotatore.setCognomeNuotatore(elemento.child(KEY_COGNOME).getValue(String.class));
                         nuotatore.setNomeNuotatore(elemento.child(KEY_NOME).getValue(String.class));
+                        listaNuotatoriLiberi.add(nuotatore);
                         idNuotatoriLiberi.add(elemento.getKey());
                         nomiNuotatoriLiberi.add(elemento.child(KEY_NOME).getValue(String.class));
                         cognomiNuotatoriLiberi.add(elemento.child(KEY_COGNOME).getValue(String.class));
-                        listaNuotatoriLiberi.add(nuotatore);
+
                     }
                 }
                 notifica.nuotatoriLiberiAggiornati();

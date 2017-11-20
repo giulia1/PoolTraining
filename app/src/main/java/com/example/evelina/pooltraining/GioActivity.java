@@ -1,9 +1,10 @@
 package com.example.evelina.pooltraining;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class GioActivity extends AppCompatActivity {
+public class GioActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

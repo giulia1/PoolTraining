@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textViewNuovoEsercizio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Nuovo Esercizio"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewNomeEsercizioAggiunto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="Nome"
+        android:layout_below="@+id/textViewNuovoEsercizio"
+        android:layout_alignLeft="@+id/textViewNVascheAggiunte"
+        android:layout_alignStart="@+id/textViewNVascheAggiunte" />
+
+    <EditText
+        android:id="@+id/editTextNomeEsercizioAggiunto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewNomeEsercizioAggiunto"
+        android:layout_alignBottom="@+id/textViewNomeEsercizioAggiunto"
+        android:layout_alignLeft="@+id/textViewNuovoEsercizio"
+        android:layout_alignStart="@+id/textViewNuovoEsercizio"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textViewNVascheAggiunte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:text="Numero Vasche"
+        android:layout_below="@+id/editTextNomeEsercizioAggiunto"
+        android:layout_toLeftOf="@+id/textViewNuovoEsercizio"
+        android:layout_toStartOf="@+id/textViewNuovoEsercizio" />
+
+    <EditText
+        android:id="@+id/editTextNumeroVascheAggiunte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextNomeEsercizioAggiunto"
+        android:layout_alignStart="@+id/editTextNomeEsercizioAggiunto"
+        android:layout_alignTop="@+id/textViewNVascheAggiunte"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/buttonAnnullaEsercizio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:text="Annulla"
+        android:layout_below="@+id/editTextNumeroVascheAggiunte"
+        android:layout_toLeftOf="@+id/editTextNumeroVascheAggiunte"
+        android:layout_toStartOf="@+id/editTextNumeroVascheAggiunte" />
+
+    <Button
+        android:id="@+id/buttonAggiungiEsercizio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/buttonAnnullaEsercizio"
+        android:layout_toEndOf="@+id/textViewNuovoEsercizio"
+        android:layout_toRightOf="@+id/textViewNuovoEsercizio"
+        android:text="Aggiungi" />
+
+</RelativeLayout>

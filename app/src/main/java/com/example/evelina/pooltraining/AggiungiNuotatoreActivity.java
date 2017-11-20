@@ -50,12 +50,15 @@ public class AggiungiNuotatoreActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                listaNuotatoriLiberi.getItemAtPosition(position);
+                //listaNuotatoriLiberi.getItemAtPosition(position);
                 nome=archivio.nomiNuotatoriLiberi.get(position);
                 cognome=archivio.cognomiNuotatoriLiberi.get(position);
-                Nuotatori n=new Nuotatori(nome,cognome);
+               // Nuotatori n=new Nuotatori(nome,cognome);
                 String idNuotatore=archivio.idNuotatoriLiberi.get(position);
-                archivio.addNuotatoreLista(n,idAllenatore, idNuotatore);
+                archivio.addNuotatoreLista(nome,cognome,idAllenatore, idNuotatore);
+                Intent listaNuotatori=new Intent(getApplicationContext(), ListaNuotatori.class);
+                startActivity(listaNuotatori);
+
             }
         });
 
