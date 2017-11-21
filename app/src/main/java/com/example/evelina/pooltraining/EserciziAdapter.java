@@ -15,6 +15,7 @@ import java.util.List;
  */
 
 public class EserciziAdapter extends BaseAdapter {
+
     private List<Esercizi> esercizi= Collections.emptyList();
     private Context context;
 
@@ -43,7 +44,7 @@ public class EserciziAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null)
-            convertView = LayoutInflater.from(context).inflate(R.layout.riga_nuotatore, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.riga_esercizio, parent, false);
 
         TextView nomeEsercizio = (TextView)convertView.findViewById(R.id.textViewNomeEsercizio);
         TextView numeroVasche  = (TextView)convertView.findViewById(R.id.textViewNVascheAggiunte);

@@ -46,16 +46,11 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     uid=user.getUid();
-                    //se sono nuotatore
-                    //Intent esercizi=new Intent(getApplicationContext(),ListaEserciziActivity.class);
-                    //esercizi.putExtra("chiave",uid);
-                    //Intent settimana = new Intent(getApplicationContext(), ListaSettimana.class);
-                    // startActivity(settimana);
 
                     Intent nuotatori=new Intent(getApplicationContext(), ListaNuotatori.class);
-                    Intent aggiungiNuotatori=new Intent(getApplicationContext(), AggiungiNuotatoreActivity.class);
-                    nuotatori.putExtra("chiave",uid);
-                    aggiungiNuotatori.putExtra("chiave",uid);
+                    //Intent aggiungiNuotatori=new Intent(getApplicationContext(), AggiungiNuotatoreActivity.class);
+                    //nuotatori.putExtra("chiave",uid);
+                    //aggiungiNuotatori.putExtra("chiave",uid);
                     startActivity(nuotatori);
                     // User is signed in
 
@@ -109,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                     //finish();
                     //se sono un allenatore e faccio il login, vado alla lista nuotatori
                     Intent listaNuotatori=new Intent(getApplicationContext(),ListaNuotatori.class);
-                    listaNuotatori.putExtra("chiave",uid);
+                    //listaNuotatori.putExtra("chiave",uid);
                     startActivity(listaNuotatori);
 
                 }

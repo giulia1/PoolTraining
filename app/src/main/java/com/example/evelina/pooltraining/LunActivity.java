@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 public class LunActivity extends Activity {
 
@@ -26,6 +27,9 @@ public class LunActivity extends Activity {
     private String idNuotatore;
     private String KEY_GIORNO = "Lunedi";
     private int nVasche;
+    private  AlertDialog alertDialog;
+    private ListView listaEsercizi;
+    private EserciziAdapter adapter;
 
 
 
@@ -38,10 +42,17 @@ public class LunActivity extends Activity {
         idNuotatore = datipassati.getString("idNuotatore");
 
         //dNuotatore = getIntent().getStringExtra("idNuotatore");
-        aggiungi = (FloatingActionButton) findViewById(R.id.buttonAggiungiEsercizio);
+        //aggiungi = (FloatingActionButton) findViewById(R.id.buttonAggiung);
+        ///listaEsercizi = (ListView) findViewById(R.id.listaEserciziAllenatore);
+        adapter = new EserciziAdapter(this);
+        archivio.leggiEsercizi(idNuotatore, KEY_GIORNO, new nuotoDatabase.UpdateListenerE() {
+            @Override
+            public void eserciziAggiornati() {
+                adapter.update(archivio.elencoEsercizi());
+            }
+        });
 
-
-
+        listaEsercizi.setAdapter(adapter);
         aggiungi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,8 +60,9 @@ public class LunActivity extends Activity {
 
                 LayoutInflater li = LayoutInflater.from(context);
                 View promptsView = li.inflate(R.layout.nuovo_esercizio, null);
-               AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LunActivity.this);
+                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LunActivity.this);
                 alertDialogBuilder.setView(promptsView);
+
                 annullaEsercizio = (Button) findViewById(R.id.buttonAnnullaEsercizio);
                 aggiungiEsercizio = (Button) findViewById(R.id.buttonAggiungiEsercizio);
                 nomeEsercizioAggiunto = (EditText) findViewById(R.id.editTextNomeEsercizioAggiunto);
@@ -66,7 +78,15 @@ public class LunActivity extends Activity {
                                                          }
                                                      }
                 );
-                AlertDialog alertDialog = alertDialogBuilder.create();
+                annullaEsercizio.setOnClickListener((new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+
+                    }));
+
+                 alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
             }
         });

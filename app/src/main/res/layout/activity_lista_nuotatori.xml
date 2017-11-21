@@ -14,19 +14,15 @@
         android:layout_height="428dp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp"
-        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="true" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButtonAggiungi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
         android:clickable="true"
         app:backgroundTint="@android:color/holo_blue_dark"
         app:elevation="0dp"
@@ -34,21 +30,30 @@
         app:srcCompat="@android:drawable/ic_input_add"
         tools:layout_editor_absoluteX="328dp"
         tools:layout_editor_absoluteY="455dp"
-        android:layout_alignBottom="@+id/listaNuotatori"
+        android:layout_below="@+id/listaNuotatori"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="14dp" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/listaNuotatori"
-        android:layout_alignEnd="@+id/listaNuotatori"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/listaNuotatori"
         android:text="I MIEI NUOTATORI"
         android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse" />
+
+    <ImageButton
+        android:id="@+id/buttonLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_lock_power_off"
+        android:layout_alignBottom="@+id/floatingActionButtonAggiungi"
+        android:layout_toLeftOf="@+id/floatingActionButtonAggiungi"
+        android:layout_toStartOf="@+id/floatingActionButtonAggiungi"
+        android:layout_marginRight="27dp"
+        android:layout_marginEnd="27dp" />
 
 </RelativeLayout>

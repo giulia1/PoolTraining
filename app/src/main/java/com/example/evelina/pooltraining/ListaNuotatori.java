@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +23,7 @@ public class ListaNuotatori extends AppCompatActivity {
     private FloatingActionButton aggiungi;
     private String idAllenatore;
     private NuotatoriAdapter adapter;
+    private ImageButton buttonLogOut;
 
 
     private final static String KEY_COGNOME = "cognome";
@@ -29,14 +31,18 @@ public class ListaNuotatori extends AppCompatActivity {
 
     private nuotoDatabase archivio = new nuotoDatabase();
     private FirebaseAuth mAuth;
+    private String idNuotatore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_nuotatori);
-        idAllenatore = getIntent().getStringExtra("chiave");
+        mAuth=FirebaseAuth.getInstance();
+        //idAllenatore = getIntent().getStringExtra("chiave");
+        idAllenatore=mAuth.getCurrentUser().getUid();
         aggiungi = (FloatingActionButton) findViewById(R.id.floatingActionButtonAggiungi);
+        //buttonLogOut = (ImageButton)findViewById(R.id.button);
 
         listaNuotatori = (ListView) findViewById(R.id.listaNuotatori);
         adapter = new NuotatoriAdapter(this);
@@ -52,7 +58,7 @@ public class ListaNuotatori extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String idNuotatore=archivio.idNuotatori.get(position);
+                idNuotatore=archivio.idNuotatori.get(position);
                 Intent aggiungiEsercizi = new Intent(getApplicationContext(), AggiungiEserciziActivity.class);
                 aggiungiEsercizi.putExtra("idNuotatore",idNuotatore);
                 startActivity(aggiungiEsercizi);
@@ -62,7 +68,7 @@ public class ListaNuotatori extends AppCompatActivity {
         aggiungi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //dopo riettereactivity aggiunginuotatori
+
                 Intent aggiungiNuotatori = new Intent(getApplicationContext(), AggiungiNuotatoreActivity.class);
                 startActivity(aggiungiNuotatori);
 
@@ -71,6 +77,17 @@ public class ListaNuotatori extends AppCompatActivity {
 
             ;
         });
+        buttonLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mAuth.signOut();
+                finish();
+                Intent loginActivity = new Intent(ListaNuotatori.this, MainActivity.class);
+                startActivity(loginActivity);
+            }
+        });
+
     }
 }
 

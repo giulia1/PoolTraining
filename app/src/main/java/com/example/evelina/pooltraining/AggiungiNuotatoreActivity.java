@@ -1,6 +1,7 @@
 package com.example.evelina.pooltraining;
 
         import android.content.Intent;
+        import android.support.annotation.Nullable;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
         import android.util.Log;
@@ -11,6 +12,7 @@ package com.example.evelina.pooltraining;
         import android.widget.TextView;
 
         import com.google.firebase.auth.FirebaseAuth;
+        import com.google.firebase.auth.FirebaseUser;
         import com.google.firebase.database.DataSnapshot;
         import com.google.firebase.database.DatabaseError;
         import com.google.firebase.database.DatabaseReference;
@@ -27,15 +29,19 @@ public class AggiungiNuotatoreActivity extends AppCompatActivity {
     private nuotoDatabase archivio = new nuotoDatabase();
     private final static String idNull = "null";
     private String idAllenatore;
+    private String idNuotatore;
     private String nome;
     private String cognome;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aggiungi_nuotatore);
-        idAllenatore=getIntent().getStringExtra("chiave");
+        //idAllenatore=getIntent().getStringExtra("chiave");
+        firebaseAuth= FirebaseAuth.getInstance();
+        idAllenatore=firebaseAuth.getCurrentUser().getUid();
         listaNuotatoriLiberi = (ListView) findViewById(R.id.listaNuotatoriLiberi);
         adapter = new NuotatoriAdapter(this);
         archivio.leggiNuotatoriLiberi(new nuotoDatabase.UpdateListenerNL() {
@@ -54,7 +60,7 @@ public class AggiungiNuotatoreActivity extends AppCompatActivity {
                 nome=archivio.nomiNuotatoriLiberi.get(position);
                 cognome=archivio.cognomiNuotatoriLiberi.get(position);
                // Nuotatori n=new Nuotatori(nome,cognome);
-                String idNuotatore=archivio.idNuotatoriLiberi.get(position);
+                idNuotatore=archivio.idNuotatoriLiberi.get(position);
                 archivio.addNuotatoreLista(nome,cognome,idAllenatore, idNuotatore);
                 Intent listaNuotatori=new Intent(getApplicationContext(), ListaNuotatori.class);
                 startActivity(listaNuotatori);
