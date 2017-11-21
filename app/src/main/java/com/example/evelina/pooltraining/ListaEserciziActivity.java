@@ -20,7 +20,7 @@ public class ListaEserciziActivity extends AppCompatActivity {
 
     private ListView listaEsercizi;
     private String idNuotatore;
-    private int weekday;
+    private String weekday;
     private ArrayList<Esercizi> list;
     private EserciziAdapter adapter;
     private nuotoDatabase archivio = new nuotoDatabase();
@@ -31,7 +31,7 @@ public class ListaEserciziActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_esercizi);
         idNuotatore=getIntent().getStringExtra("chiave");
-        weekday=getIntent().getIntExtra("posizione",1);
+        weekday=getIntent().getStringExtra("giorno");
         listaEsercizi = (ListView) findViewById(R.id.listaEsercizi);
         adapter = new EserciziAdapter(this);
 

@@ -16,6 +16,7 @@ public class ListaSettimana extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_settimana);
+
         list=(ListView)findViewById(R.id.listaSettimana);
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nome);
         list.setAdapter(adapter);
@@ -23,7 +24,8 @@ public class ListaSettimana extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent esercizi=new Intent(getApplicationContext(), ListaEserciziActivity.class);
-                esercizi.putExtra("posizione", position);
+                String giorno=list.getItemAtPosition(position).toString();
+                esercizi.putExtra("giorno", giorno);
                 startActivity(esercizi);
 
             }

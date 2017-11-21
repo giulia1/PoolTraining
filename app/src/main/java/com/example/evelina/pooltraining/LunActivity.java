@@ -16,8 +16,9 @@ import android.widget.ListView;
 
 public class LunActivity extends Activity {
 
-    private FloatingActionButton aggiungi;
+
     final Context context = this;
+    private FloatingActionButton aggiungi;
     private Button annullaEsercizio;
     private Button aggiungiEsercizio;
     private nuotoDatabase  archivio = new nuotoDatabase();
