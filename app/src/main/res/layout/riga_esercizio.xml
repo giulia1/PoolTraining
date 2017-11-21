@@ -5,6 +5,8 @@
     android:layout_height="match_parent">
 
 
+
+
     <TextView
         android:id="@+id/textViewNomeEsercizio"
         android:layout_width="wrap_content"
@@ -22,4 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.24"
         android:text="Vasche" />
+
+    <CheckBox
+        android:id="@+id/checkBoxEseguito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.06" />
 </LinearLayout>
