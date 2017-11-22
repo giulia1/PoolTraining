@@ -39,10 +39,10 @@ public class ListaNuotatori extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_nuotatori);
         mAuth=FirebaseAuth.getInstance();
-        //idAllenatore = getIntent().getStringExtra("chiave");
-        idAllenatore=mAuth.getCurrentUser().getUid();
+        idAllenatore = getIntent().getStringExtra("chiave");
+        //idAllenatore=mAuth.getCurrentUser().getUid();
         aggiungi = (FloatingActionButton) findViewById(R.id.floatingActionButtonAggiungi);
-        //buttonLogOut = (ImageButton)findViewById(R.id.button);
+        buttonLogOut = (ImageButton)findViewById(R.id.buttonLogout);
 
         listaNuotatori = (ListView) findViewById(R.id.listaNuotatori);
         adapter = new NuotatoriAdapter(this);
@@ -59,9 +59,9 @@ public class ListaNuotatori extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 idNuotatore=archivio.idNuotatori.get(position);
-                Intent aggiungiEsercizi = new Intent(getApplicationContext(), AggiungiEserciziActivity.class);
-                aggiungiEsercizi.putExtra("idNuotatore",idNuotatore);
-                startActivity(aggiungiEsercizi);
+                Intent listaSettimana = new Intent(getApplicationContext(), ListaSettimana.class);
+                listaSettimana.putExtra("idNuotatore",idNuotatore);
+                startActivity(listaSettimana);
 
             }
         });
@@ -70,6 +70,7 @@ public class ListaNuotatori extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent aggiungiNuotatori = new Intent(getApplicationContext(), AggiungiNuotatoreActivity.class);
+                aggiungiNuotatori.putExtra("chiave",idAllenatore);
                 startActivity(aggiungiNuotatori);
 
 

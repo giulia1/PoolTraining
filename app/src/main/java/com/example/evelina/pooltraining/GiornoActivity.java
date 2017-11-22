@@ -2,8 +2,6 @@ package com.example.evelina.pooltraining;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,8 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-public class LunActivity extends Activity {
-
+public class GiornoActivity extends Activity {
 
     final Context context = this;
     private FloatingActionButton aggiungi;
@@ -28,23 +25,18 @@ public class LunActivity extends Activity {
     private String idNuotatore;
     private String KEY_GIORNO = "Lunedi";
     private int nVasche;
-    private  AlertDialog alertDialog;
+    private AlertDialog alertDialog;
     private ListView listaEsercizi;
     private EserciziAdapter adapter;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lun);
-        Bundle datipassati = getIntent().getExtras();
-        idNuotatore = datipassati.getString("idNuotatore");
-
+        setContentView(R.layout.activity_giorno);
         //dNuotatore = getIntent().getStringExtra("idNuotatore");
-        //aggiungi = (FloatingActionButton) findViewById(R.id.buttonAggiung);
-        ///listaEsercizi = (ListView) findViewById(R.id.listaEserciziAllenatore);
+        aggiungi = (FloatingActionButton) findViewById(R.id.buttonAggiungiEse);
+        listaEsercizi = (ListView) findViewById(R.id.listaEserciziAllenatore);
         adapter = new EserciziAdapter(this);
         archivio.leggiEsercizi(idNuotatore, KEY_GIORNO, new nuotoDatabase.UpdateListenerE() {
             @Override
@@ -61,7 +53,7 @@ public class LunActivity extends Activity {
 
                 LayoutInflater li = LayoutInflater.from(context);
                 View promptsView = li.inflate(R.layout.nuovo_esercizio, null);
-                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LunActivity.this);
+                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GiornoActivity.this);
                 alertDialogBuilder.setView(promptsView);
 
                 annullaEsercizio = (Button) findViewById(R.id.buttonAnnullaEsercizio);
@@ -85,11 +77,15 @@ public class LunActivity extends Activity {
                         alertDialog.dismiss();
                     }
 
-                    }));
+                }));
 
-                 alertDialog = alertDialogBuilder.create();
+                alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
             }
         });
     }
-}
+
+
+
+    }
+

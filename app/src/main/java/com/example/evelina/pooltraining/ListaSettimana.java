@@ -11,6 +11,7 @@ public class ListaSettimana extends AppCompatActivity {
 
     private ListView list;
     private String []nome={"Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato","Domenica"};
+    private String idNuotatore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,7 @@ public class ListaSettimana extends AppCompatActivity {
         setContentView(R.layout.activity_lista_settimana);
 
         list=(ListView)findViewById(R.id.listaSettimana);
+        idNuotatore=getIntent().getStringExtra("idNuotatore");
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nome);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -26,6 +28,7 @@ public class ListaSettimana extends AppCompatActivity {
                 Intent esercizi=new Intent(getApplicationContext(), ListaEserciziActivity.class);
                 String giorno=list.getItemAtPosition(position).toString();
                 esercizi.putExtra("giorno", giorno);
+                esercizi.putExtra("idNuotatore", idNuotatore);
                 startActivity(esercizi);
 
             }

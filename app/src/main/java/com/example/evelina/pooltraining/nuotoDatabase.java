@@ -27,7 +27,7 @@ public class nuotoDatabase {
     private ArrayList<Nuotatori> listaNuotatori;
     private ArrayList<Esercizi> listaEsercizi;
     private ArrayList<Nuotatori> listaNuotatoriLiberi;
-     ArrayList<String> idNuotatoriLiberi;
+    ArrayList<String> idNuotatoriLiberi;
     ArrayList<String> idNuotatori;
     ArrayList<String> nomiNuotatoriLiberi;
     ArrayList<String> cognomiNuotatoriLiberi;
@@ -82,11 +82,13 @@ public class nuotoDatabase {
         return key;
     }
 
-    public  void addNuotatoreLista(String nome, String cognome, String idAllenatore, String idNuotatore) {
+    public  void addNuotatoreLista(Nuotatori n, String idAllenatore, String idNuotatore) {
 //aggiungere direttamente l intero oggetto
-        mDatabase.child(allenatori).child(idAllenatore).child(nuotatori).child(idNuotatore).child(KEY_NOME).setValue(nome);
-        mDatabase.child(allenatori).child(idAllenatore).child(nuotatori).child(idNuotatore).child(KEY_COGNOME).setValue(cognome);
-        mDatabase.child(nuotatori).child(idNuotatore).child(KEY_ID_ALLENATORE).setValue(idAllenatore);
+        mDatabase = database.getReference(allenatori).child(idAllenatore).child(nuotatori);
+        mDatabase.child(idNuotatore).child(KEY_NOME).setValue(n.getNomeNuotatore());
+        mDatabase.child(idNuotatore).child(KEY_COGNOME).setValue(n.getCognomeNuotatore());
+        mDatabase=database.getReference(nuotatori);
+        mDatabase.child(idNuotatore).child(KEY_ID_ALLENATORE).setValue(idAllenatore);
 
     }
 
@@ -136,7 +138,7 @@ public class nuotoDatabase {
 
     public void leggiEsercizi(String idNuotatore, String weekDay,final UpdateListenerE notifica) {
         //FirebaseDatabase database = FirebaseDatabase.getInstance();
-        mDatabase = database.getReference(nuotatori).child(idNuotatore).child(esercizi).child(weekDay); //fare il casting
+        mDatabase = database.getReference(nuotatori).child(idNuotatore).child(esercizi).child(weekDay);
 
         listenerEsercizi = new ValueEventListener() {
             @Override
@@ -166,7 +168,7 @@ public class nuotoDatabase {
     }
     public void terminaOsservazioneEsercizi(String idNuotatore) {
         if (listenerEsercizi != null)
-            database.getReference(nuotatori).child(idNuotatore).child(esercizi).child("1").removeEventListener(listenerNuotatori);
+            database.getReference(nuotatori).child(idNuotatore).child(esercizi).removeEventListener(listenerNuotatori);
     }
     public List<Esercizi> elencoEsercizi () {
         return listaEsercizi;
@@ -210,6 +212,7 @@ public class nuotoDatabase {
 
     }
     public void terminaOsservazioneNuotatoriLiberi() {
+
         if (listenerNuotatoriLiberi != null)
             database.getReference(nuotatori).removeEventListener(listenerNuotatoriLiberi);
     }

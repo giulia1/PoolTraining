@@ -8,36 +8,36 @@ import java.io.Serializable;
 
 public class Nuotatori implements Serializable {
 
-    private String nomeNuotatore;
-    private String cognomeNuotatore;
-    private String idAllenatore;
+    private String Nome;
+    private String Cognome;
+    private String Id_Allenatore;
 
     public Nuotatori(String nome, String cognome){
-        this.nomeNuotatore=nome;
-        this.cognomeNuotatore=cognome;
+        this.Nome=nome;
+        this.Cognome=cognome;
     }
     public Nuotatori(){}
 
-    public Nuotatori(String nomeNuotatore,String cognomeNuotatore,String idAllenatore){
+    public Nuotatori(String nome,String cognome,String idAllenatore){
 
-        this.nomeNuotatore=nomeNuotatore;
-        this.cognomeNuotatore=cognomeNuotatore;
-        this.idAllenatore=idAllenatore;
+        this.Nome=nome;
+        this.Cognome=cognome;
+        this.Id_Allenatore=idAllenatore;
     }
     public String getNomeNuotatore() {
-        return nomeNuotatore;
+        return Nome;
     }
 
-    public void setNomeNuotatore(String nomeNuotatore) {
-        this.nomeNuotatore = nomeNuotatore;
+    public void setNomeNuotatore(String nome) {
+        this.Nome = nome;
     }
 
     public String getCognomeNuotatore() {
-        return cognomeNuotatore;
+        return Cognome;
     }
 
-    public void setCognomeNuotatore(String cognomeNuotatore) {
-        this.cognomeNuotatore = cognomeNuotatore;
+    public void setCognomeNuotatore(String cognome) {
+        this.Cognome = cognome;
     }
 
 

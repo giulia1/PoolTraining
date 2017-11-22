@@ -48,6 +48,7 @@ public class EserciziAdapter extends BaseAdapter {
 
         TextView nomeEsercizio = (TextView)convertView.findViewById(R.id.textViewNomeEsercizio);
         TextView numeroVasche  = (TextView)convertView.findViewById(R.id.textViewNVascheAggiunte);
+        TextView vasche=(TextView)convertView.findViewById(R.id.textViewVasche) ;
 
 
         // Imposto i valori da visualizzare

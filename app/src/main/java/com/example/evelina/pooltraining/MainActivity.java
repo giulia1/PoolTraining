@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
                     uid=user.getUid();
 
                     Intent nuotatori=new Intent(getApplicationContext(), ListaNuotatori.class);
-                    //Intent aggiungiNuotatori=new Intent(getApplicationContext(), AggiungiNuotatoreActivity.class);
-                    //nuotatori.putExtra("chiave",uid);
-                    //aggiungiNuotatori.putExtra("chiave",uid);
+                    Intent aggiungiNuotatori=new Intent(getApplicationContext(), AggiungiNuotatoreActivity.class);
+                    nuotatori.putExtra("chiave",uid);
+                    aggiungiNuotatori.putExtra("chiave",uid);
                     startActivity(nuotatori);
                     // User is signed in
 

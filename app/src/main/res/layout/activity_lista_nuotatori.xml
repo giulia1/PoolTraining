@@ -14,9 +14,11 @@
         android:layout_height="428dp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp"
-        android:layout_alignParentTop="true"
+        android:background="#ffffff"
+        android:layout_alignBottom="@+id/floatingActionButtonAggiungi"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="19dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButtonAggiungi"
@@ -30,10 +32,10 @@
         app:srcCompat="@android:drawable/ic_input_add"
         tools:layout_editor_absoluteX="328dp"
         tools:layout_editor_absoluteY="455dp"
-        android:layout_below="@+id/listaNuotatori"
+        android:layout_marginBottom="11dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="14dp" />
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/textView"
@@ -50,10 +52,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_lock_power_off"
-        android:layout_alignBottom="@+id/floatingActionButtonAggiungi"
-        android:layout_toLeftOf="@+id/floatingActionButtonAggiungi"
-        android:layout_toStartOf="@+id/floatingActionButtonAggiungi"
-        android:layout_marginRight="27dp"
-        android:layout_marginEnd="27dp" />
+        android:layout_alignTop="@+id/floatingActionButtonAggiungi"
+        android:layout_toRightOf="@+id/listaNuotatori"
+        android:layout_toEndOf="@+id/listaNuotatori" />
 
 </RelativeLayout>

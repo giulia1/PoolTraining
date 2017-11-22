@@ -1,20 +1,21 @@
 package com.example.evelina.pooltraining;
 
+import java.io.Serializable;
+
 /**
  * Created by Sony on 20/10/2017.
  */
 
-public class Esercizi {
+public class Esercizi implements Serializable {
 
     private String nomeEsercizio;
-   // private int giornoSettimanaEsercizio;
     private int numeroVascheEsercizio;
 
     public Esercizi(){}
 
-    public Esercizi(String nomeEsercizio, int giornoSettimanaEsercizio,int numeroVascheEsercizio){
+    public Esercizi (String nomeEsercizio, int numeroVascheEsercizio){
+
         this.nomeEsercizio=nomeEsercizio;
-        //this.giornoSettimanaEsercizio=giornoSettimanaEsercizio;
         this.numeroVascheEsercizio=numeroVascheEsercizio;
     }
 
@@ -26,19 +27,13 @@ public class Esercizi {
         this.nomeEsercizio = nomeEsercizio;
     }
 
-    //public int getGiornoSettimanaEsercizio() {
-      //  return giornoSettimanaEsercizio;
-    //}
-
-    public void setGiornoSettimanaEsercizio(int giornoSettimanaEsercizio) {
-        //this.giornoSettimanaEsercizio = giornoSettimanaEsercizio;
-    }
 
     public int getNumeroVascheEsercizio() {
         return numeroVascheEsercizio;
     }
 
     public void setNumeroVascheEsercizio(int numeroVascheEsercizio) {
+
         this.numeroVascheEsercizio = numeroVascheEsercizio;
     }
 

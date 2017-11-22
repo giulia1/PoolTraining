@@ -20,8 +20,6 @@ public class NuotatoriAdapter extends BaseAdapter {
 
     private List<Nuotatori> nuotatori=Collections.emptyList();
     private Context context;
-     public String nome;
-    public   String cognome;
 
     public NuotatoriAdapter(Context context) {
         this.context=context;
@@ -36,18 +34,14 @@ public class NuotatoriAdapter extends BaseAdapter {
         return nuotatori.get(position);
     }
 
-    public String getNome(int position){
-        return nome;
-    }
-    public String getCognome(int position){
-        return cognome;
-    }
 
     @Override
     public long getItemId(int position) {
         return 0;
     }
+
     public void update(List<Nuotatori> newList) {
+
         nuotatori = newList;
         notifyDataSetChanged();
     }
@@ -65,8 +59,6 @@ public class NuotatoriAdapter extends BaseAdapter {
         Nuotatori nuotatore = nuotatori.get(position);
         textCognomeNuotatore.setText(nuotatore.getCognomeNuotatore());
         textNomeNuotatore.setText(nuotatore.getNomeNuotatore());
-        nome=textNomeNuotatore.getText().toString();
-        cognome=textCognomeNuotatore.getText().toString();
 
 
         return convertView;

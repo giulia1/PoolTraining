@@ -1,20 +1,21 @@
 package com.example.evelina.pooltraining;
 
+import android.app.TabActivity;
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TabHost;
-import android.app.TabActivity;
 
 @SuppressWarnings("deprecation")
 public class AggiungiEserciziActivity extends TabActivity {
 
     private TabHost tabHost;
-
+    private String giorno;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aggiungi_esercizi2);
-
         tabHost=(TabHost)findViewById(android.R.id.tabhost);
 
         TabHost.TabSpec lun=tabHost.newTabSpec("lun");
@@ -24,23 +25,34 @@ public class AggiungiEserciziActivity extends TabActivity {
         TabHost.TabSpec ven=tabHost.newTabSpec("ven");
         TabHost.TabSpec sab=tabHost.newTabSpec("sab");
 
+        Intent intent=new Intent(this, GiornoActivity.class);
+
+
         lun.setIndicator("Lun");
-        lun.setContent(new Intent(this,LunActivity.class));
+        lun.setContent(intent);
+        //giorno=lun.getTag();
 
         mar.setIndicator("Mar");
-        mar.setContent(new Intent(this,MarActivity.class));
+        mar.setContent(intent);
+        //intent.putExtra("giorno", "Mar");
 
         mer.setIndicator("Mer");
-        mer.setContent(new Intent(this,MerActivity.class));
+        mer.setContent(intent);
+        //intent.putExtra("giorno", "Mer");
 
         gio.setIndicator("Gio");
-        gio.setContent(new Intent(this,GioActivity.class));
+        gio.setContent(intent);
+        //intent.putExtra("giorno", "Gio");
 
         ven.setIndicator("Ven");
-        ven.setContent(new Intent(this,VenActivity.class));
+        ven.setContent(intent);
+        //intent.putExtra("giorno", "Ven");
+
 
         sab.setIndicator("Sab");
-        sab.setContent(new Intent(this,SabActivity.class));
+        sab.getTag();
+        sab.setContent(intent);
+        //intent.putExtra("giorno", "Sab");
 
         tabHost.addTab(lun);
         tabHost.addTab(mar);
@@ -49,4 +61,8 @@ public class AggiungiEserciziActivity extends TabActivity {
         tabHost.addTab(ven);
         tabHost.addTab(sab);
     }
-}
+
+
+
+    }
+

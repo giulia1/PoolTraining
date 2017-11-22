@@ -32,16 +32,16 @@ public class AggiungiNuotatoreActivity extends AppCompatActivity {
     private String idNuotatore;
     private String nome;
     private String cognome;
-    private FirebaseAuth firebaseAuth;
+    //private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aggiungi_nuotatore);
-        //idAllenatore=getIntent().getStringExtra("chiave");
-        firebaseAuth= FirebaseAuth.getInstance();
-        idAllenatore=firebaseAuth.getCurrentUser().getUid();
+        idAllenatore=getIntent().getStringExtra("chiave");
+      // firebaseAuth= FirebaseAuth.getInstance();
+        //idAllenatore=firebaseAuth.getCurrentUser().getUid();
         listaNuotatoriLiberi = (ListView) findViewById(R.id.listaNuotatoriLiberi);
         adapter = new NuotatoriAdapter(this);
         archivio.leggiNuotatoriLiberi(new nuotoDatabase.UpdateListenerNL() {
@@ -59,9 +59,9 @@ public class AggiungiNuotatoreActivity extends AppCompatActivity {
                 //listaNuotatoriLiberi.getItemAtPosition(position);
                 nome=archivio.nomiNuotatoriLiberi.get(position);
                 cognome=archivio.cognomiNuotatoriLiberi.get(position);
-               // Nuotatori n=new Nuotatori(nome,cognome);
+                Nuotatori n=new Nuotatori(nome,cognome);
                 idNuotatore=archivio.idNuotatoriLiberi.get(position);
-                archivio.addNuotatoreLista(nome,cognome,idAllenatore, idNuotatore);
+                archivio.addNuotatoreLista(n,idAllenatore, idNuotatore);
                 Intent listaNuotatori=new Intent(getApplicationContext(), ListaNuotatori.class);
                 startActivity(listaNuotatori);
 
