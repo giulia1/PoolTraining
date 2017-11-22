@@ -25,7 +25,7 @@ public class nuotoDatabase {
     private  final  static String vasche="vasche";
 
     private ArrayList<Nuotatori> listaNuotatori;
-    private ArrayList<Esercizi> listaEsercizi;
+     private ArrayList<Esercizi> listaEsercizi;
     private ArrayList<Nuotatori> listaNuotatoriLiberi;
     ArrayList<String> idNuotatoriLiberi;
     ArrayList<String> idNuotatori;
@@ -36,7 +36,6 @@ public class nuotoDatabase {
     private ValueEventListener listenerNuotatori;
     private ValueEventListener listenerNuotatoriLiberi;
     private ValueEventListener listenerEsercizi;
-    private ValueEventListener listener;
 
     private FirebaseDatabase database=FirebaseDatabase.getInstance();
     private DatabaseReference mDatabase;

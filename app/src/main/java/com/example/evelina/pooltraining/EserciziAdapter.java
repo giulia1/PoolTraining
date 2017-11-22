@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
+import org.w3c.dom.Text;
 import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Utente on 25/10/2017.
@@ -36,9 +36,10 @@ public class EserciziAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return 0;
     }
+
     public void update(List<Esercizi> newList) {
         esercizi = newList;
-        notifyDataSetChanged();
+       notifyDataSetChanged();
     }
 
     @Override

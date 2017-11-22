@@ -22,9 +22,11 @@ public class ListaSettimana extends AppCompatActivity {
         idNuotatore=getIntent().getStringExtra("idNuotatore");
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nome);
         list.setAdapter(adapter);
+
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 Intent esercizi=new Intent(getApplicationContext(), ListaEserciziActivity.class);
                 String giorno=list.getItemAtPosition(position).toString();
                 esercizi.putExtra("giorno", giorno);

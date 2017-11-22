@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:background="@color/colorAccent"
     android:layout_height="match_parent">
-
-
 
 
     <TextView
         android:id="@+id/textViewNomeEsercizio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.48" />
+        android:layout_weight="0.48"
+        android:text="Ciao" />
 
     <TextView
         android:id="@+id/textViewNVascheAggiunte"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="1" />
 
     <TextView
         android:id="@+id/textViewVasche"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.24"
-        android:text="Vasche" />
+        android:text="Vasche"
+        tools:text="Delfino" />
 
 </LinearLayout>

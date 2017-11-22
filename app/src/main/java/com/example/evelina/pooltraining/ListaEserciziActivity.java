@@ -1,19 +1,12 @@
 package com.example.evelina.pooltraining;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.AdapterView;
 
-import android.widget.ArrayAdapter;
+
 import android.widget.ListView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 
 public class ListaEserciziActivity extends AppCompatActivity {
@@ -32,8 +25,11 @@ public class ListaEserciziActivity extends AppCompatActivity {
 
         idNuotatore=getIntent().getStringExtra("idNuotatore");
         weekday=getIntent().getStringExtra("giorno");
+
         listaEsercizi = (ListView) findViewById(R.id.listaEsercizi);
         adapter = new EserciziAdapter(this);
+
+
 
         archivio.leggiEsercizi(idNuotatore, weekday, new nuotoDatabase.UpdateListenerE() {
             @Override
@@ -41,16 +37,16 @@ public class ListaEserciziActivity extends AppCompatActivity {
                 adapter.update(archivio.elencoEsercizi());
             }
         });
-
         listaEsercizi.setAdapter(adapter);
 
 
 
-                }
+
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        archivio.terminaOsservazioneNuotatori(idNuotatore);
+        archivio.terminaOsservazioneEsercizi(idNuotatore);
     }
 
 
