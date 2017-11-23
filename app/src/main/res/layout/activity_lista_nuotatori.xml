@@ -5,20 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@drawable/flat12"
     tools:context="com.example.evelina.pooltraining.ListaNuotatori">
 
     <ListView
         android:id="@+id/listaNuotatori"
+        style="@style/Widget.AppCompat.Light.ListView.DropDown"
         android:layout_width="272dp"
         android:layout_height="428dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"
-        android:background="#ffffff"
-        android:layout_alignBottom="@+id/floatingActionButtonAggiungi"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="19dp" />
+        android:layout_below="@+id/textView"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButtonAggiungi"
@@ -45,7 +44,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:text="I MIEI NUOTATORI"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <ImageButton
         android:id="@+id/buttonLogout"

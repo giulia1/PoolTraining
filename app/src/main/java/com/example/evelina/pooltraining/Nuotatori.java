@@ -13,6 +13,7 @@ public class Nuotatori implements Serializable {
     private String Id_Allenatore;
 
     public Nuotatori(String nome, String cognome){
+
         this.Nome=nome;
         this.Cognome=cognome;
     }
