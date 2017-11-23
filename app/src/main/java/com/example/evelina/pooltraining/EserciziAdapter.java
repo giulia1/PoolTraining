@@ -20,7 +20,13 @@ public class EserciziAdapter extends BaseAdapter {
     private Context context;
 
     public EserciziAdapter(Context context) {
+
         this.context=context;
+    }
+
+    public void update(List<Esercizi> newList) {
+        esercizi = newList;
+        notifyDataSetChanged();
     }
     @Override
     public int getCount() {
@@ -28,18 +34,18 @@ public class EserciziAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Object getItem(int position)
+    {
         return esercizi.get(position);
+
     }
 
     @Override
     public long getItemId(int position) {
         return 0;
     }
-    public void update(List<Esercizi> newList) {
-        esercizi = newList;
-        notifyDataSetChanged();
-    }
+
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {

@@ -97,6 +97,15 @@ public class nuotoDatabase {
         mDatabase.child(nuotatori).child(idNuotatore).child(esercizi).child(giorno).child(nome).child(vasche).setValue(nVasche);
     }
 
+
+
+    public void modificaEsercizio(){
+
+    }
+    public void cancellaEsercizio(){
+
+    }
+
             public void leggiNuotatori(String idAllenatore, final UpdateListenerN notifica) {
         //FirebaseDatabase database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference(allenatori).child(idAllenatore).child(nuotatori);
@@ -137,7 +146,7 @@ public class nuotoDatabase {
         }
 
     public void leggiEsercizi(String idNuotatore, String weekDay,final UpdateListenerE notifica) {
-        //FirebaseDatabase database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference(nuotatori).child(idNuotatore).child(esercizi).child(weekDay);
 
         listenerEsercizi = new ValueEventListener() {

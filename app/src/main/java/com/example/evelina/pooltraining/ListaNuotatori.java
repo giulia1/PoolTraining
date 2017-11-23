@@ -1,11 +1,12 @@
 package com.example.evelina.pooltraining;
-import android.content.ClipData;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.PopupMenu;
 import android.util.Log;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -17,7 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 
-public class ListaNuotatori extends AppCompatActivity {
+public class ListaNuotatori extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     private ListView listaNuotatori;
     private FloatingActionButton aggiungi;
@@ -38,11 +39,11 @@ public class ListaNuotatori extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_nuotatori);
-        mAuth=FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         idAllenatore = getIntent().getStringExtra("chiave");
         //idAllenatore=mAuth.getCurrentUser().getUid();
         aggiungi = (FloatingActionButton) findViewById(R.id.floatingActionButtonAggiungi);
-        buttonLogOut = (ImageButton)findViewById(R.id.buttonLogout);
+        buttonLogOut = (ImageButton) findViewById(R.id.buttonLogout);
 
         listaNuotatori = (ListView) findViewById(R.id.listaNuotatori);
         adapter = new NuotatoriAdapter(this);
@@ -58,9 +59,9 @@ public class ListaNuotatori extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                idNuotatore=archivio.idNuotatori.get(position);
+                idNuotatore = archivio.idNuotatori.get(position);
                 Intent listaSettimana = new Intent(getApplicationContext(), ListaSettimana.class);
-                listaSettimana.putExtra("idNuotatore",idNuotatore);
+                listaSettimana.putExtra("idNuotatore", idNuotatore);
                 startActivity(listaSettimana);
 
             }
@@ -70,7 +71,7 @@ public class ListaNuotatori extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent aggiungiNuotatori = new Intent(getApplicationContext(), AggiungiNuotatoreActivity.class);
-                aggiungiNuotatori.putExtra("chiave",idAllenatore);
+                aggiungiNuotatori.putExtra("chiave", idAllenatore);
                 startActivity(aggiungiNuotatori);
 
 
@@ -88,6 +89,36 @@ public class ListaNuotatori extends AppCompatActivity {
                 startActivity(loginActivity);
             }
         });
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        archivio.terminaOsservazioneNuotatori(idAllenatore);
+    }
+
+    public void showPopup(View v) {
+
+        PopupMenu popup = new PopupMenu(this, v);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.menu_riga_esercizio, popup.getMenu());
+        popup.show();
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.Modifica:
+                archivio.modificaEsercizio();
+                return true;
+            case R.id.Cancella:
+                archivio.cancellaEsercizio();
+                return true;
+            default:
+                return false;
+        }
+
 
     }
 }

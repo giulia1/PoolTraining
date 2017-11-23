@@ -11,7 +11,10 @@ public class Esercizi implements Serializable {
     private String nomeEsercizio;
     private int numeroVascheEsercizio;
 
-    public Esercizi(){}
+    public Esercizi()
+    {
+
+    }
 
     public Esercizi (String nomeEsercizio, int numeroVascheEsercizio){
 
@@ -20,15 +23,18 @@ public class Esercizi implements Serializable {
     }
 
     public String getNomeEsercizio() {
+
         return nomeEsercizio;
     }
 
     public void setNomeEsercizio(String nomeEsercizio) {
+
         this.nomeEsercizio = nomeEsercizio;
     }
 
 
     public int getNumeroVascheEsercizio() {
+
         return numeroVascheEsercizio;
     }
 
