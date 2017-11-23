@@ -98,28 +98,8 @@ public class ListaNuotatori extends AppCompatActivity implements PopupMenu.OnMen
         archivio.terminaOsservazioneNuotatori(idAllenatore);
     }
 
-    public void showPopup(View v) {
-
-        PopupMenu popup = new PopupMenu(this, v);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.menu_riga_esercizio, popup.getMenu());
-        popup.show();
-    }
-
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.Modifica:
-                archivio.modificaEsercizio();
-                return true;
-            case R.id.Cancella:
-                archivio.cancellaEsercizio();
-                return true;
-            default:
-                return false;
-        }
 
 
     }
-}
+
 

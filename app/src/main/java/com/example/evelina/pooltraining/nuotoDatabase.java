@@ -91,19 +91,26 @@ public class nuotoDatabase {
 
     }
 
-    public  void addEsercizio( String idNuotatore, String giorno,int nVasche, String nome) {//corretto addniuotatore(nuiotatore) al posto di getid?
+    public  void addEsercizio( String idNuotatore, String giorno,int nVasche, String nome) {
 
-        mDatabase.child(nuotatori).child(idNuotatore).child(esercizi).child(giorno).child(nome).child(vasche).setValue(nVasche);
+        mDatabase = database.getReference(nuotatori);
+        mDatabase.child(idNuotatore).child(esercizi).child(giorno).child(nome).child(vasche).setValue(nVasche);
+    }
+    public void rimuoviEsercizio (String idNuotatore, String giorno){
+
+        mDatabase = database.getReference(nuotatori);
+        mDatabase.child(idNuotatore).child(esercizi).child(giorno).removeValue();
+
+
+
+    }
+    public void modificaEsercizio(String idNuotatore, String nomeEse, String giorno, int nVasche){
+
+        mDatabase=database.getReference(nuotatori);
+        mDatabase.child(idNuotatore).child(esercizi).child(giorno).child(nomeEse).child(vasche).setValue(nVasche);
+
     }
 
-
-
-    public void modificaEsercizio(){
-
-    }
-    public void cancellaEsercizio(){
-
-    }
 
             public void leggiNuotatori(String idAllenatore, final UpdateListenerN notifica) {
         //FirebaseDatabase database = FirebaseDatabase.getInstance();

@@ -1,11 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-< xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewNuovoNumeroVasche"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="44dp"
+        android:text="Numero Vasche:" />
+
+    <Spinner
+        android:id="@+id/spinnerNumeriVasche"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_alignTop="@+id/textViewNuovoNumeroVasche"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/textViewNuovoNumeroVasche"
+        android:layout_toRightOf="@+id/textViewNuovoNumeroVasche" />
+
+    <Button
+        android:id="@+id/buttonConferma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/spinnerNumeriVasche"
+        android:layout_marginEnd="53dp"
+        android:layout_marginRight="53dp"
+        android:layout_marginTop="22dp"
+        android:text="Conferma" />
+
+    <Button
+        android:id="@+id/buttonAnnulla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/buttonConferma"
+        android:layout_alignBottom="@+id/buttonConferma"
+        android:layout_alignLeft="@+id/spinnerNumeriVasche"
+        android:layout_alignStart="@+id/spinnerNumeriVasche"
+        android:text="Annulla" />
 </>
