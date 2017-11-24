@@ -7,26 +7,22 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by Utente on 25/10/2017.
+ * Created by Sony on 22/10/2017.
  */
 
 public class EserciziAdapter extends BaseAdapter {
 
-    private List<Esercizi> esercizi= Collections.emptyList();
+    private List<Esercizi> esercizi=Collections.emptyList();
     private Context context;
 
     public EserciziAdapter(Context context) {
-
         this.context=context;
-    }
-
-    public void update(List<Esercizi> newList) {
-        esercizi = newList;
-        notifyDataSetChanged();
     }
     @Override
     public int getCount() {
@@ -34,18 +30,21 @@ public class EserciziAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position)
-    {
+    public Object getItem(int position) {
         return esercizi.get(position);
-
     }
+
 
     @Override
     public long getItemId(int position) {
         return 0;
     }
 
+    public void update(List<Esercizi> newList) {
 
+        esercizi = newList;
+        notifyDataSetChanged();
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -53,17 +52,15 @@ public class EserciziAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.riga_esercizio, parent, false);
 
         TextView nomeEsercizio = (TextView)convertView.findViewById(R.id.textViewNomeEsercizio);
-        TextView numeroVasche  = (TextView)convertView.findViewById(R.id.textViewNVascheAggiunte);
-        TextView vasche=(TextView)convertView.findViewById(R.id.textViewVasche) ;
+        TextView  numeroVasche= (TextView)convertView.findViewById(R.id.textViewNVascheAggiunte);
 
 
         // Imposto i valori da visualizzare
-        Esercizi e = esercizi.get(position);
-        numeroVasche.setText(e.getNumeroVascheEsercizio());
+     Esercizi e = esercizi.get(position);
         nomeEsercizio.setText(e.getNomeEsercizio());
+        numeroVasche.setText(e.getNumeroVascheEsercizio());
 
 
         return convertView;
     }
-
 }

@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 
-public class ListaNuotatori extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class ListaNuotatori extends AppCompatActivity {
 
     private ListView listaNuotatori;
     private FloatingActionButton aggiungi;

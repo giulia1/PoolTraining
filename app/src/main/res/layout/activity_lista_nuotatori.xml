@@ -10,9 +10,9 @@
 
     <ListView
         android:id="@+id/listaNuotatori"
-        style="@style/Widget.AppCompat.Light.ListView.DropDown"
-        android:layout_width="272dp"
+        android:layout_width="368dp"
         android:layout_height="428dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
@@ -31,10 +31,11 @@
         app:srcCompat="@android:drawable/ic_input_add"
         tools:layout_editor_absoluteX="328dp"
         tools:layout_editor_absoluteY="455dp"
-        android:layout_marginBottom="11dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginRight="31dp"
+        android:layout_marginEnd="31dp"
+        android:layout_alignBottom="@+id/buttonLogout"
+        android:layout_toLeftOf="@+id/buttonLogout"
+        android:layout_toStartOf="@+id/buttonLogout" />
 
     <TextView
         android:id="@+id/textView"
@@ -51,8 +52,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_lock_power_off"
-        android:layout_alignTop="@+id/floatingActionButtonAggiungi"
-        android:layout_toRightOf="@+id/listaNuotatori"
-        android:layout_toEndOf="@+id/listaNuotatori" />
+        android:layout_below="@+id/listaNuotatori"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

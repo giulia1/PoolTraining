@@ -60,7 +60,7 @@ public class nuotoDatabase {
     public interface UpdateListenerN {
         void nuotatoriAggiornati();
     }
-    public interface UpdateListenerE {
+    public interface UpdateListener {
         void eserciziAggiornati();
     }
     public interface UpdateListenerNL {
@@ -113,7 +113,7 @@ public class nuotoDatabase {
 
 
             public void leggiNuotatori(String idAllenatore, final UpdateListenerN notifica) {
-        //FirebaseDatabase database = FirebaseDatabase.getInstance();
+
         mDatabase = database.getReference(allenatori).child(idAllenatore).child(nuotatori);
 
         listenerNuotatori = new ValueEventListener() {
@@ -151,19 +151,23 @@ public class nuotoDatabase {
             return listaNuotatori;
         }
 
-    public void leggiEsercizi(String idNuotatore, String weekDay,final UpdateListenerE notifica) {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        mDatabase = database.getReference(nuotatori).child(idNuotatore).child(esercizi).child(weekDay);
+
+
+    public void leggiEsercizi(String idNuotatore, String weekDay,final UpdateListener notifica) {
+
+        mDatabase = database.getReference(nuotatori).child(idNuotatore).child(weekDay);
 
         listenerEsercizi = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 listaEsercizi.clear();
                 for (DataSnapshot elemento : dataSnapshot.getChildren()) {
-                    Esercizi esercizio = new Esercizi();
-                    esercizio.setNomeEsercizio(elemento.getValue(String.class));
-                    esercizio.setNumeroVascheEsercizio(elemento.child(vasche).getValue(Integer.class));
-                    listaEsercizi.add(esercizio);
+                    Esercizi e = new Esercizi();
+                    e.setNomeEsercizio(elemento.getValue(String.class));
+                    e.setNumeroVascheEsercizio(elemento.child(vasche).getValue(Integer.class));
+
+                    listaEsercizi.add(e);
+
                 }
                 notifica.eserciziAggiornati();
             }
@@ -182,12 +186,17 @@ public class nuotoDatabase {
 
     }
     public void terminaOsservazioneEsercizi(String idNuotatore) {
-        if (listenerEsercizi != null)
-            database.getReference(nuotatori).child(idNuotatore).child(esercizi).removeEventListener(listenerNuotatori);
+        if (listenerNuotatori != null)
+            database.getReference(nuotatori).child(idNuotatore).child(esercizi).removeEventListener(listenerEsercizi);
     }
     public List<Esercizi> elencoEsercizi () {
         return listaEsercizi;
     }
+
+
+
+
+
 
     public void leggiNuotatoriLiberi(final UpdateListenerNL notifica) {
 

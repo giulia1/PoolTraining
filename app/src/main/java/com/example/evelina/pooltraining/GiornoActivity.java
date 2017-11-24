@@ -38,7 +38,7 @@ public class GiornoActivity extends Activity {
         aggiungi = (FloatingActionButton) findViewById(R.id.buttonAggiungiEse);
         listaEsercizi = (ListView) findViewById(R.id.listaEserciziAllenatore);
         adapter = new EserciziAdapter(this);
-        archivio.leggiEsercizi(idNuotatore, KEY_GIORNO, new nuotoDatabase.UpdateListenerE() {
+        archivio.leggiEsercizi(idNuotatore, KEY_GIORNO, new nuotoDatabase.UpdateListener() {
             @Override
             public void eserciziAggiornati() {
                 adapter.update(archivio.elencoEsercizi());

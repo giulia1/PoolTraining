@@ -3,19 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="20dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:weightSum="1">
 
 
     <TextView
         android:id="@+id/textViewNomeNuotatore"
         android:layout_width="119dp"
-        android:layout_height="wrap_content"
+        android:layout_height="27dp"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/textViewCognomeNuotatore"
         android:layout_width="108dp"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_height="48dp"
+        android:text="TextView"
+        android:layout_weight="0.27" />
 
 </LinearLayout>
