@@ -162,20 +162,23 @@ public class nuotoDatabase {
 
 
 
-    public void leggiEsercizi(String idNuotatore, String weekDay,final UpdateListenerE notifica) {
-        DatabaseReference ref = database.getReference(nuotatori).child(idNuotatore).child(esercizi).child(weekDay);
+    public void leggiEsercizi(final String idNuotatore, final String weekDay, final UpdateListenerE notifica) {
+        DatabaseReference ref = database.getReference("Esercizi2");
 
         listenerEsercizi = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 listaEsercizi.clear();
                 for (DataSnapshot elemento : dataSnapshot.getChildren()) {
-                    Esercizi e = new Esercizi();
+                    if(elemento.child("giornoSettimana").equals(weekDay)&&elemento.child("idNuotatore").equals(idNuotatore)) {
+                        Esercizi e = new Esercizi();
+
                     e.setNomeEsercizio(elemento.child("nomeEsercizio").getValue(String.class));
-                    e.setNumeroVascheEsercizio(elemento.child("numeroVasche").getValue(Integer.class));
+                    e.setNumeroVasche(elemento.child("numeroVasche").getValue(Integer.class));
 
                     listaEsercizi.add(e);
 
+                }
                 }
                 notifica.eserciziAggiornati();
             }

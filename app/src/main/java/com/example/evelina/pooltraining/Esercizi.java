@@ -10,16 +10,20 @@ public class Esercizi implements Serializable {
 
     private String nomeEsercizio;
     private int numeroVasche;
+    private String idNuotatore;
+    private String giornoSettimana;
 
     public Esercizi()
     {
 
     }
 
-    public Esercizi (String nomeEsercizio, int numeroVascheEsercizio){
+    public Esercizi (String nomeEsercizio, int numeroVascheEsercizio, String idNuotatore, String giornoSettimana){
 
         this.nomeEsercizio=nomeEsercizio;
         this.numeroVasche=numeroVascheEsercizio;
+        this.idNuotatore=idNuotatore;
+        this.giornoSettimana=giornoSettimana;
     }
 
     public String getNomeEsercizio() {
@@ -38,9 +42,21 @@ public class Esercizi implements Serializable {
         return numeroVasche;
     }
 
-    public void setNumeroVascheEsercizio(int numeroVascheEsercizio) {
+    public void setNumeroVasche(int numeroVascheEsercizio) {
 
         this.numeroVasche = numeroVascheEsercizio;
+    }
+    public String getGiornoSettimana(){
+        return giornoSettimana;
+    }
+    public void setGiornoSettimana(String giornoSettimana){
+        this.giornoSettimana=giornoSettimana;
+    }
+    public String getIdNuotatore(){
+        return idNuotatore;
+    }
+    public void setIdNuotatore(String idNuotatore){
+        this.idNuotatore=idNuotatore;
     }
 
 
