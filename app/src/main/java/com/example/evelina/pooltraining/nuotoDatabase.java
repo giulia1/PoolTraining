@@ -171,8 +171,8 @@ public class nuotoDatabase {
                 listaEsercizi.clear();
                 for (DataSnapshot elemento : dataSnapshot.getChildren()) {
                     Esercizi e = new Esercizi();
-                    e.setNomeEsercizio(elemento.getValue(String.class));
-                    e.setNumeroVascheEsercizio(elemento.child(vasche).getValue(Integer.class));
+                    e.setNomeEsercizio(elemento.child("nomeEsercizio").getValue(String.class));
+                    e.setNumeroVascheEsercizio(elemento.child("numeroVasche").getValue(Integer.class));
 
                     listaEsercizi.add(e);
 

@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class Esercizi implements Serializable {
 
     private String nomeEsercizio;
-    private int numeroVascheEsercizio;
+    private int numeroVasche;
 
     public Esercizi()
     {
@@ -19,7 +19,7 @@ public class Esercizi implements Serializable {
     public Esercizi (String nomeEsercizio, int numeroVascheEsercizio){
 
         this.nomeEsercizio=nomeEsercizio;
-        this.numeroVascheEsercizio=numeroVascheEsercizio;
+        this.numeroVasche=numeroVascheEsercizio;
     }
 
     public String getNomeEsercizio() {
@@ -33,14 +33,14 @@ public class Esercizi implements Serializable {
     }
 
 
-    public int getNumeroVascheEsercizio() {
+    public int getNumeroVasche() {
 
-        return numeroVascheEsercizio;
+        return numeroVasche;
     }
 
     public void setNumeroVascheEsercizio(int numeroVascheEsercizio) {
 
-        this.numeroVascheEsercizio = numeroVascheEsercizio;
+        this.numeroVasche = numeroVascheEsercizio;
     }
 
 
