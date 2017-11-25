@@ -9,12 +9,14 @@
         android:id="@+id/textViewNomeEsercizio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.17" />
+        android:layout_weight="0.17"
+        android:text="TextView" />
 
     <TextView
         android:id="@+id/textViewNVascheAggiunte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.17" />
+        android:layout_weight="0.17"
+        android:text="TextView" />
 
 </LinearLayout>
