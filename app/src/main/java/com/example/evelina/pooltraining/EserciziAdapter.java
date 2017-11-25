@@ -6,9 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -54,9 +51,7 @@ public class EserciziAdapter extends BaseAdapter {
         TextView nomeEsercizio = (TextView)convertView.findViewById(R.id.textViewNomeEsercizio);
         TextView  numeroVasche= (TextView)convertView.findViewById(R.id.textViewNVascheAggiunte);
 
-
-        // Imposto i valori da visualizzare
-     Esercizi e = esercizi.get(position);
+        Esercizi e = esercizi.get(position);
         nomeEsercizio.setText(e.getNomeEsercizio());
         numeroVasche.setText(e.getNumeroVasche());
 
