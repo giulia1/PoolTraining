@@ -69,7 +69,7 @@ public class ListaEserciziActivity extends AppCompatActivity {
         weekday = getIntent().getStringExtra("giorno");
 
 
-        archivio.leggiEsercizi(idNuotatore, weekday, new nuotoDatabase.UpdateListener() {
+        archivio.leggiEsercizi(idNuotatore, weekday, new nuotoDatabase.UpdateListenerE() {
             @Override
             public void eserciziAggiornati() {
                 adapter.update(archivio.elencoEsercizi());
@@ -79,6 +79,12 @@ public class ListaEserciziActivity extends AppCompatActivity {
         listaEsercizi.setAdapter(adapter);
 
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        archivio.terminaOsservazioneEsercizi(idNuotatore);
+    }
+
 }
 
 

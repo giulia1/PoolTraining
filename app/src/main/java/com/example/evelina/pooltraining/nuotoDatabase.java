@@ -60,13 +60,16 @@ public class nuotoDatabase {
         cognomiNuotatoriLiberi=new ArrayList<>();
     }
 
-    public interface UpdateListener {
+    public interface UpdateListenerN {
         void nuotatoriAggiornati();
+    }
+    public interface UpdateListenerE {
         void eserciziAggiornati();
+
+    }
+    public interface UpdateListenerNL {
         void nuotatoriLiberiAggiornati();
     }
-
-
 
 
 
@@ -117,7 +120,7 @@ public class nuotoDatabase {
     }
 
 
-            public void leggiNuotatori(String idAllenatore, final UpdateListener notifica) {
+            public void leggiNuotatori(String idAllenatore, final UpdateListenerN notifica) {
                 DatabaseReference  ref = database.getReference(allenatori).child(idAllenatore).child(nuotatori);
 
         listenerNuotatori = new ValueEventListener() {
@@ -159,7 +162,7 @@ public class nuotoDatabase {
 
 
 
-    public void leggiEsercizi(String idNuotatore, String weekDay,final UpdateListener notifica) {
+    public void leggiEsercizi(String idNuotatore, String weekDay,final UpdateListenerE notifica) {
         DatabaseReference ref = database.getReference(nuotatori).child(idNuotatore).child(esercizi).child(weekDay);
 
         listenerEsercizi = new ValueEventListener() {
@@ -203,7 +206,7 @@ public class nuotoDatabase {
 
 
 
-    public void leggiNuotatoriLiberi(final UpdateListener notifica) {
+    public void leggiNuotatoriLiberi(final UpdateListenerNL notifica) {
 
         DatabaseReference ref = database.getReference(nuotatori);
         listenerNuotatoriLiberi= new ValueEventListener() {
