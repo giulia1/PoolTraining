@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:background="@drawable/flat12"
     android:layout_height="match_parent">
 
 
@@ -10,21 +9,19 @@
         android:id="@+id/textViewNomeEsercizio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.48"
-        android:text="Ciao" />
+        android:layout_weight="0.48" />
 
     <TextView
         android:id="@+id/textViewNVascheAggiunte"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="1" />
+        android:layout_weight="0.06" />
 
     <TextView
         android:id="@+id/textViewVasche"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.24"
-        android:text="Vasche"
-        tools:text="Delfino" />
+        android:text="Vasche" />
 
 </LinearLayout>
