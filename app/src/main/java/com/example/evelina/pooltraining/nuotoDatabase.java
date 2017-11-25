@@ -163,7 +163,7 @@ public class nuotoDatabase {
 
 
     public void leggiEsercizi(final String idNuotatore, final String weekDay, final UpdateListenerE notifica) {
-        DatabaseReference ref = database.getReference("Esercizi2");
+        DatabaseReference ref = database.getReference(esercizi);
 
         listenerEsercizi = new ValueEventListener() {
             @Override
@@ -198,7 +198,7 @@ public class nuotoDatabase {
 
     public void terminaOsservazioneEsercizi  (String idNuotatore) {
         if (listenerNuotatori != null)
-            database.getReference(nuotatori).child(idNuotatore).child(esercizi).removeEventListener(listenerEsercizi);
+            database.getReference(esercizi).removeEventListener(listenerEsercizi);
     }
     public List<Esercizi> elencoEsercizi () {
         return listaEsercizi;
