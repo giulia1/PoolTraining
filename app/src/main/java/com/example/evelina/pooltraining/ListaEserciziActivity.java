@@ -29,17 +29,6 @@ public class ListaEserciziActivity extends AppCompatActivity {
     final Context context = this;
 
     private FloatingActionButton buttonAggiungiEse;
-    private Button annullaEsercizioAggiunto;
-    private Button aggiungiEsercizio;
-    private Button buttonAnnulla;
-    private Button buttonConferma;
-
-    private TextView textViewNVasche;
-    private EditText editTextNomeEsercizioAggiunto;
-    private EditText numeroVascheAggiunte;
-
-    private Spinner spinnerNVasche;
-    private Spinner spinnerNomiEse;
     private nuotoDatabase archivio = new nuotoDatabase();
 
     private String nomeEsercizioAggiunto;
@@ -61,12 +50,13 @@ public class ListaEserciziActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_esercizi);
 
+        idNuotatore = getIntent().getStringExtra("idNuotatore");
+        weekday = getIntent().getStringExtra("giorno");
+
         listaEsercizi = (ListView) findViewById(R.id.listaEsercizi);
         buttonAggiungiEse = (FloatingActionButton) findViewById(R.id.floatingActionButtonAggiungiEse);
         adapter = new EserciziAdapter(this);
 
-        idNuotatore = getIntent().getStringExtra("idNuotatore");
-        weekday = getIntent().getStringExtra("giorno");
 
 
         archivio.leggiEsercizi(idNuotatore, weekday, new nuotoDatabase.UpdateListenerE() {
