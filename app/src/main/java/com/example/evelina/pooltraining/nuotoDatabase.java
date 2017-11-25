@@ -1,13 +1,16 @@
 package com.example.evelina.pooltraining;
 
-
 import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 import java.util.*;
 
@@ -57,15 +60,17 @@ public class nuotoDatabase {
         cognomiNuotatoriLiberi=new ArrayList<>();
     }
 
-    public interface UpdateListenerN {
-        void nuotatoriAggiornati();
-    }
     public interface UpdateListener {
+        void nuotatoriAggiornati();
         void eserciziAggiornati();
-    }
-    public interface UpdateListenerNL {
         void nuotatoriLiberiAggiornati();
     }
+
+
+
+
+
+
     public  String addAllenatoreDB(Allenatori a) { //restituisce id allenatore
 
         String key = mDatabase.child(allenatori).push().getKey();
@@ -112,9 +117,8 @@ public class nuotoDatabase {
     }
 
 
-            public void leggiNuotatori(String idAllenatore, final UpdateListenerN notifica) {
-
-        mDatabase = database.getReference(allenatori).child(idAllenatore).child(nuotatori);
+            public void leggiNuotatori(String idAllenatore, final UpdateListener notifica) {
+                DatabaseReference  ref = database.getReference(allenatori).child(idAllenatore).child(nuotatori);
 
         listenerNuotatori = new ValueEventListener() {
             @Override
@@ -122,6 +126,7 @@ public class nuotoDatabase {
                 listaNuotatori.clear();
                 for (DataSnapshot elemento : dataSnapshot.getChildren()) {
                     Nuotatori nuotatore = new Nuotatori();
+
                     nuotatore.setCognomeNuotatore(elemento.child(KEY_COGNOME).getValue(String.class));
                     nuotatore.setNomeNuotatore(elemento.child(KEY_NOME).getValue(String.class));
                     listaNuotatori.add(nuotatore);
@@ -139,11 +144,12 @@ public class nuotoDatabase {
 
 
         };
-        mDatabase.addValueEventListener(listenerNuotatori);
+        ref.addValueEventListener(listenerNuotatori);
 
 
     }
     public void terminaOsservazioneNuotatori(String idAllenatore) {
+
         if (listenerNuotatori != null)
             database.getReference(allenatori).child(idAllenatore).child(nuotatori).removeEventListener(listenerNuotatori);
     }
@@ -154,8 +160,7 @@ public class nuotoDatabase {
 
 
     public void leggiEsercizi(String idNuotatore, String weekDay,final UpdateListener notifica) {
-
-        mDatabase = database.getReference(nuotatori).child(idNuotatore).child(weekDay);
+        DatabaseReference ref = database.getReference(nuotatori).child(idNuotatore).child(esercizi).child(weekDay);
 
         listenerEsercizi = new ValueEventListener() {
             @Override
@@ -181,11 +186,11 @@ public class nuotoDatabase {
 
 
         };
-        mDatabase.addValueEventListener(listenerEsercizi);
-
+        ref.addValueEventListener(listenerEsercizi);
 
     }
-    public void terminaOsservazioneEsercizi(String idNuotatore) {
+
+    public void terminaOsservazioneEsercizi  (String idNuotatore) {
         if (listenerNuotatori != null)
             database.getReference(nuotatori).child(idNuotatore).child(esercizi).removeEventListener(listenerEsercizi);
     }
@@ -198,10 +203,9 @@ public class nuotoDatabase {
 
 
 
-    public void leggiNuotatoriLiberi(final UpdateListenerNL notifica) {
+    public void leggiNuotatoriLiberi(final UpdateListener notifica) {
 
-        //FirebaseDatabase database = FirebaseDatabase.getInstance();
-        mDatabase = database.getReference(nuotatori);
+        DatabaseReference ref = database.getReference(nuotatori);
         listenerNuotatoriLiberi= new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -231,7 +235,7 @@ public class nuotoDatabase {
 
 
         };
-        mDatabase.addValueEventListener(listenerNuotatoriLiberi);
+        ref.addValueEventListener(listenerNuotatoriLiberi);
 
 
     }
