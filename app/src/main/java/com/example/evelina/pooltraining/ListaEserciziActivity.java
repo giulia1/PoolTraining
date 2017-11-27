@@ -5,20 +5,10 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.PopupMenu;
-import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.support.design.widget.FloatingActionButton;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
+
 
 
 
@@ -52,7 +42,6 @@ public class ListaEserciziActivity extends AppCompatActivity {
 
         idNuotatore = getIntent().getStringExtra("idNuotatore");
         weekday = getIntent().getStringExtra("giorno");
-
         listaEsercizi = (ListView) findViewById(R.id.listaEsercizi);
         buttonAggiungiEse = (FloatingActionButton) findViewById(R.id.floatingActionButtonAggiungiEse);
         adapter = new EserciziAdapter(this);

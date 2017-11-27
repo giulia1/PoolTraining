@@ -17,17 +17,17 @@ public class Allenatori{
         this.cognomeAllenatore=cognomeAllenatore;
     }
 
-    public String getNomeAllenatore(){
+    public String getNome(){
         return nomeAllenatore;
     }
-    public String getCognomeAllenatore(){
+    public String getCognome(){
         return cognomeAllenatore;
     }
-    public void setNomeAllenatore(String nomeAllenatore) {
+    public void setNome(String nomeAllenatore) {
         this.nomeAllenatore = nomeAllenatore;
     }
 
-    public void setCognomeAllenatore(String cognomeAllenatore) {
+    public void setCognome(String cognomeAllenatore) {
         this.cognomeAllenatore = cognomeAllenatore;
     }
 }

@@ -6,16 +6,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
 import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by Sony on 22/10/2017.
+ * Created by Utente on 27/11/2017.
  */
+
+
 
 public class EserciziAdapter extends BaseAdapter {
 
-    private List<Esercizi> esercizi=Collections.emptyList();
+     private List<Esercizi> esercizi= Collections.emptyList();
     private Context context;
 
     public EserciziAdapter(Context context) {

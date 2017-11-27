@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class Esercizi implements Serializable {
 
     private String nomeEsercizio;
-    private int numeroVasche;
+    private String numeroVasche;
     private String idNuotatore;
     private String giornoSettimana;
 
@@ -18,7 +18,7 @@ public class Esercizi implements Serializable {
 
     }
 
-    public Esercizi (String nomeEsercizio, int numeroVascheEsercizio, String idNuotatore, String giornoSettimana){
+    public Esercizi (String nomeEsercizio, String numeroVascheEsercizio, String idNuotatore, String giornoSettimana){
 
         this.nomeEsercizio=nomeEsercizio;
         this.numeroVasche=numeroVascheEsercizio;
@@ -37,12 +37,12 @@ public class Esercizi implements Serializable {
     }
 
 
-    public int getNumeroVasche() {
 
+        public String getNumeroVasche() {
         return numeroVasche;
     }
 
-    public void setNumeroVasche(int numeroVascheEsercizio) {
+    public void setNumeroVasche(String numeroVascheEsercizio) {
 
         this.numeroVasche = numeroVascheEsercizio;
     }

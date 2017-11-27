@@ -2,6 +2,7 @@ package com.example.evelina.pooltraining;
 
 import android.util.Log;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +29,7 @@ public class nuotoDatabase {
     private  final  static String vasche="vasche";
 
     private ArrayList<Nuotatori> listaNuotatori;
-     private ArrayList<Esercizi> listaEsercizi;
+    private ArrayList<Esercizi> listaEsercizi;
     private ArrayList<Nuotatori> listaNuotatoriLiberi;
     ArrayList<String> idNuotatoriLiberi;
     ArrayList<String> idNuotatori;
@@ -39,6 +40,32 @@ public class nuotoDatabase {
     private ValueEventListener listenerNuotatori;
     private ValueEventListener listenerNuotatoriLiberi;
     private ValueEventListener listenerEsercizi;
+    private ChildEventListener listener=new ChildEventListener() {
+        @Override
+        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+        }
+
+        @Override
+        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+        }
+
+        @Override
+        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+        }
+
+        @Override
+        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
 
     private FirebaseDatabase database=FirebaseDatabase.getInstance();
     private DatabaseReference mDatabase;
@@ -46,7 +73,10 @@ public class nuotoDatabase {
     private final static String KEY_COGNOME = "Cognome";
     private final static String KEY_NOME = "Nome";
     private final static String KEY_ID_ALLENATORE = "Id_Allenatore";
-//    private String idNuotatore;
+    private final String KEY_idNuotatore="idNuotatore";
+    private final String Key_giornoSettimana="giornoSettimana";
+    private String idNuotatore;
+    private String weekday;
 
 
     public nuotoDatabase() {
@@ -160,26 +190,26 @@ public class nuotoDatabase {
             return listaNuotatori;
         }
 
+    public void leggiEsercizi(String idNuotatore,  String weekday, final UpdateListenerE notifica) {
 
+        DatabaseReference ref = database.getReference(nuotatori).child(idNuotatore).child(esercizi).child(weekday);
+       listenerEsercizi=new ValueEventListener() {
 
-    public void leggiEsercizi(final String idNuotatore, final String weekDay, final UpdateListenerE notifica) {
-        DatabaseReference ref = database.getReference(esercizi);
-
-        listenerEsercizi = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 listaEsercizi.clear();
+
                 for (DataSnapshot elemento : dataSnapshot.getChildren()) {
-                    if(elemento.child("giornoSettimana").equals(weekDay)&&elemento.child("idNuotatore").equals(idNuotatore)) {
+
                         Esercizi e = new Esercizi();
+                        e.setNomeEsercizio(elemento.child("nomeEsercizio").getValue(String.class));
+                        e.setNumeroVasche(elemento.child("numeroVasche").getValue(String.class));
 
-                    e.setNomeEsercizio(elemento.child("nomeEsercizio").getValue(String.class));
-                    e.setNumeroVasche(elemento.child("numeroVasche").getValue(Integer.class));
+                        listaEsercizi.add(e);
 
-                    listaEsercizi.add(e);
 
                 }
-                }
+
                 notifica.eserciziAggiornati();
             }
 
