@@ -56,13 +56,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aggiungi"
-        android:layout_alignBaseline="@+id/buttonAnnulla"
-        android:layout_alignBottom="@+id/buttonAnnulla"
+        android:layout_alignBaseline="@+id/buttonAnnullaModifica"
+        android:layout_alignBottom="@+id/buttonAnnullaModifica"
         android:layout_alignRight="@+id/editTextNumeroVasche"
         android:layout_alignEnd="@+id/editTextNumeroVasche" />
 
     <Button
-        android:id="@+id/buttonAnnulla"
+        android:id="@+id/buttonAnnullaModifica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="89dp"

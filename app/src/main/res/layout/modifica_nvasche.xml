@@ -28,7 +28,7 @@
         android:layout_toRightOf="@+id/textViewNuovoNumeroVasche" />
 
     <Button
-        android:id="@+id/buttonConferma"
+        android:id="@+id/buttonConfermaModifica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -40,11 +40,11 @@
         android:text="Conferma" />
 
     <Button
-        android:id="@+id/buttonAnnulla"
+        android:id="@+id/buttonAnnullaModifica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/buttonConferma"
-        android:layout_alignBottom="@+id/buttonConferma"
+        android:layout_alignBaseline="@+id/buttonConfermaModifica"
+        android:layout_alignBottom="@+id/buttonConfermaModifica"
         android:layout_alignLeft="@+id/spinnerNumeriVasche"
         android:layout_alignStart="@+id/spinnerNumeriVasche"
         android:text="Annulla" />

@@ -35,37 +35,12 @@ public class nuotoDatabase {
     ArrayList<String> idNuotatori;
     ArrayList<String> nomiNuotatoriLiberi;
     ArrayList<String> cognomiNuotatoriLiberi;
+    ArrayList<String> idEsercizi;
 
 
     private ValueEventListener listenerNuotatori;
     private ValueEventListener listenerNuotatoriLiberi;
     private ValueEventListener listenerEsercizi;
-    private ChildEventListener listener=new ChildEventListener() {
-        @Override
-        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-        }
-
-        @Override
-        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-        }
-
-        @Override
-        public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-        }
-
-        @Override
-        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-        }
-
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
-
-        }
-    };
 
     private FirebaseDatabase database=FirebaseDatabase.getInstance();
     private DatabaseReference mDatabase;
@@ -86,6 +61,7 @@ public class nuotoDatabase {
         listaNuotatoriLiberi=new ArrayList<>();
         idNuotatoriLiberi=new ArrayList<>();
         idNuotatori=new ArrayList<>();
+       idEsercizi=new ArrayList<>();
         nomiNuotatoriLiberi=new ArrayList<>();
         cognomiNuotatoriLiberi=new ArrayList<>();
     }
@@ -122,30 +98,39 @@ public class nuotoDatabase {
     public  void addNuotatoreLista(Nuotatori n, String idAllenatore, String idNuotatore) {
 //aggiungere direttamente l intero oggetto
         mDatabase = database.getReference(allenatori).child(idAllenatore).child(nuotatori);
-        mDatabase.child(idNuotatore).child(KEY_NOME).setValue(n.getNomeNuotatore());
-        mDatabase.child(idNuotatore).child(KEY_COGNOME).setValue(n.getCognomeNuotatore());
+        mDatabase.child(idNuotatore).child(KEY_NOME).setValue(n.getNome());
+        mDatabase.child(idNuotatore).child(KEY_COGNOME).setValue(n.getCognome());
         mDatabase=database.getReference(nuotatori);
         mDatabase.child(idNuotatore).child(KEY_ID_ALLENATORE).setValue(idAllenatore);
 
     }
 
-    public  void addEsercizio( String idNuotatore, String giorno,int nVasche, String nome) {
+    public  void addEsercizio( String idNuotatore, String giorno, String nomeEsercizio, int numeroVasche) {
+
+        mDatabase = database.getReference(nuotatori).child(idNuotatore).child(esercizi).child(giorno);
+        String key = mDatabase.push().getKey();
+        mDatabase.child(key).child("nomeEsercizio").setValue(nomeEsercizio);
+        mDatabase.child(key).child("numeroVasche").setValue(numeroVasche);
+    }
+    public void rimuoviEsercizio (String idNuotatore, String giorno,String idEsercizio){
 
         mDatabase = database.getReference(nuotatori);
-        mDatabase.child(idNuotatore).child(esercizi).child(giorno).child(nome).child(vasche).setValue(nVasche);
+        mDatabase.child(idNuotatore).child(esercizi).child(giorno).child(idEsercizio).removeValue();
     }
-    public void rimuoviEsercizio (String idNuotatore, String giorno){
+    public void rimuoviNuotatore(String idNuotatore, String idAllenatore){
 
-        mDatabase = database.getReference(nuotatori);
-        mDatabase.child(idNuotatore).child(esercizi).child(giorno).removeValue();
+        mDatabase = database.getReference(allenatori);
+        mDatabase.child(idAllenatore).child(nuotatori).child(idNuotatore).removeValue();
+        mDatabase=database.getReference(nuotatori);
+        mDatabase.child(idNuotatore).child(KEY_ID_ALLENATORE).setValue("null");
 
 
 
     }
-    public void modificaEsercizio(String idNuotatore, String nomeEse, String giorno, int nVasche){
+    public void modificaEsercizio(String idNuotatore, String idEsercizio, String giorno, int nVasche){
 
         mDatabase=database.getReference(nuotatori);
-        mDatabase.child(idNuotatore).child(esercizi).child(giorno).child(nomeEse).child(vasche).setValue(nVasche);
+        mDatabase.child(idNuotatore).child(esercizi).child(giorno).child(idEsercizio).child(vasche).setValue(nVasche);
 
     }
 
@@ -160,8 +145,8 @@ public class nuotoDatabase {
                 for (DataSnapshot elemento : dataSnapshot.getChildren()) {
                     Nuotatori nuotatore = new Nuotatori();
 
-                    nuotatore.setCognomeNuotatore(elemento.child(KEY_COGNOME).getValue(String.class));
-                    nuotatore.setNomeNuotatore(elemento.child(KEY_NOME).getValue(String.class));
+                    nuotatore.setCognome(elemento.child(KEY_COGNOME).getValue(String.class));
+                    nuotatore.setNome(elemento.child(KEY_NOME).getValue(String.class));
                     listaNuotatori.add(nuotatore);
                     idNuotatori.add(elemento.getKey());
                 }
@@ -203,7 +188,8 @@ public class nuotoDatabase {
 
                         Esercizi e = new Esercizi();
                         e.setNomeEsercizio(elemento.child("nomeEsercizio").getValue(String.class));
-                        e.setNumeroVasche(elemento.child("numeroVasche").getValue(String.class));
+                        e.setNumeroVasche(elemento.child("numeroVasche").getValue(Integer.class));
+                        idEsercizi.add(elemento.getKey());
 
                         listaEsercizi.add(e);
 
@@ -250,8 +236,8 @@ public class nuotoDatabase {
                     if(elemento.child(KEY_ID_ALLENATORE).getValue(String.class).equals("null")) {
 
                         Nuotatori nuotatore = new Nuotatori();
-                        nuotatore.setCognomeNuotatore(elemento.child(KEY_COGNOME).getValue(String.class));
-                        nuotatore.setNomeNuotatore(elemento.child(KEY_NOME).getValue(String.class));
+                        nuotatore.setCognome(elemento.child(KEY_COGNOME).getValue(String.class));
+                        nuotatore.setNome(elemento.child(KEY_NOME).getValue(String.class));
                         listaNuotatoriLiberi.add(nuotatore);
                         idNuotatoriLiberi.add(elemento.getKey());
                         nomiNuotatoriLiberi.add(elemento.child(KEY_NOME).getValue(String.class));

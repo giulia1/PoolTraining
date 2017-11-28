@@ -25,19 +25,19 @@ public class Nuotatori implements Serializable {
         this.Cognome=cognome;
         this.Id_Allenatore=idAllenatore;
     }
-    public String getNomeNuotatore() {
+    public String getNome() {
         return Nome;
     }
 
-    public void setNomeNuotatore(String nome) {
+    public void setNome(String nome) {
         this.Nome = nome;
     }
 
-    public String getCognomeNuotatore() {
+    public String getCognome() {
         return Cognome;
     }
 
-    public void setCognomeNuotatore(String cognome) {
+    public void setCognome(String cognome) {
         this.Cognome = cognome;
     }
 

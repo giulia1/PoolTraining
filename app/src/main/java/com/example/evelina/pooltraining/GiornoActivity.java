@@ -66,7 +66,7 @@ public class GiornoActivity extends Activity {
                                                          public void onClick(View v) {
                                                              nomeEsercizio = nomeEsercizioAggiunto.getText().toString();
                                                              nVasche = Integer.parseInt(numeroVascheAggiunte.toString());
-                                                             archivio.addEsercizio(idNuotatore, KEY_GIORNO, nVasche, nomeEsercizio);
+                                                             //archivio.addEsercizio(idNuotatore, KEY_GIORNO, nVasche, nomeEsercizio);
 
                                                          }
                                                      }

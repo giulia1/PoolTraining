@@ -1,30 +1,29 @@
 package com.example.evelina.pooltraining;
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
-import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 
-
-public class ListaNuotatori extends AppCompatActivity {
+public class ListaNuotatoriActivity extends AppCompatActivity  implements PopupMenu.OnMenuItemClickListener {
 
     private ListView listaNuotatori;
     private FloatingActionButton aggiungi;
     private String idAllenatore;
     private NuotatoriAdapter adapter;
     private ImageButton buttonLogOut;
+    final Context context = this;
 
 
     private final static String KEY_COGNOME = "cognome";
@@ -66,6 +65,14 @@ public class ListaNuotatori extends AppCompatActivity {
 
             }
         });
+        listaNuotatori.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                showPopup(view);
+
+                return false;
+            }
+        });
         aggiungi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,12 +92,22 @@ public class ListaNuotatori extends AppCompatActivity {
 
                 mAuth.signOut();
                 finish();
-                Intent loginActivity = new Intent(ListaNuotatori.this, MainActivity.class);
+                Intent loginActivity = new Intent(ListaNuotatoriActivity.this, MainActivity.class);
                 startActivity(loginActivity);
             }
         });
 
     }
+
+    public void showPopup(View v) {
+
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.setOnMenuItemClickListener(ListaNuotatoriActivity.this);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.elimina_nuotatore, popup.getMenu());
+        popup.show();
+    }
+
 
     @Override
     protected void onDestroy() {
@@ -99,7 +116,25 @@ public class ListaNuotatori extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
 
+
+        switch (item.getItemId()) {
+
+            case R.id.Cancella:
+                Toast toast2 = Toast.makeText(context, "Nuotatore cancellato", Toast.LENGTH_SHORT);
+                toast2.show();
+                archivio.rimuoviNuotatore(idNuotatore, idAllenatore);
+
+
+                return true;
+            default:
+                return false;
+
+
+        }
     }
+}
 
 

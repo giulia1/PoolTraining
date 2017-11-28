@@ -1,68 +1,93 @@
 package com.example.evelina.pooltraining;
-
-import android.app.TabActivity;
+;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TabHost;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 @SuppressWarnings("deprecation")
-public class AggiungiEserciziActivity extends TabActivity {
+public class AggiungiEserciziActivity extends AppCompatActivity {
 
-    private TabHost tabHost;
-    private String giorno;
+    //private String giorno;
+    private String nomeEsercizioAggiunto;
+    private String idNuotatore;
+    private String weekday;
+    private int numeroVascheAggiunte;
+
+    private TextView nomeNuovoEsercizio;
+    private TextView numeroVascheEsercizio;
+
+    private Button buttonAggiungi;
+    private Button buttonAnnulla;
+
+    private Spinner spinnerNomiEsercizi;
+    private EditText editTextNumeroVasche;
+    private nuotoDatabase archivio = new nuotoDatabase();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_aggiungi_esercizi2);
-        tabHost=(TabHost)findViewById(android.R.id.tabhost);
+        setContentView(R.layout.activity_aggiungi_esercizi);
 
-        TabHost.TabSpec lun=tabHost.newTabSpec("lun");
-        TabHost.TabSpec mar=tabHost.newTabSpec("mar");
-        TabHost.TabSpec mer=tabHost.newTabSpec("mer");
-        TabHost.TabSpec gio=tabHost.newTabSpec("gio");
-        TabHost.TabSpec ven=tabHost.newTabSpec("ven");
-        TabHost.TabSpec sab=tabHost.newTabSpec("sab");
+        idNuotatore = getIntent().getStringExtra("idNuotatore");
+        weekday = getIntent().getStringExtra("giorno");
 
-        Intent intent=new Intent(this, GiornoActivity.class);
-
-
-        lun.setIndicator("Lun");
-        lun.setContent(intent);
-        //giorno=lun.getTag();
-
-        mar.setIndicator("Mar");
-        mar.setContent(intent);
-        //intent.putExtra("giorno", "Mar");
-
-        mer.setIndicator("Mer");
-        mer.setContent(intent);
-        //intent.putExtra("giorno", "Mer");
-
-        gio.setIndicator("Gio");
-        gio.setContent(intent);
-        //intent.putExtra("giorno", "Gio");
-
-        ven.setIndicator("Ven");
-        ven.setContent(intent);
-        //intent.putExtra("giorno", "Ven");
+        nomeNuovoEsercizio = (TextView) findViewById(R.id.textViewNomeNuovoEsercizio);
+        numeroVascheEsercizio = (TextView) findViewById(R.id.textViewNumeroVasche);
+        buttonAggiungi = (Button) findViewById(R.id.buttonAggiungiEsercizio);
+        buttonAnnulla = (Button) findViewById(R.id.buttonAnnullaModifica);
+        editTextNumeroVasche = (EditText) findViewById(R.id.editTextNumeroVasche);
+        spinnerNomiEsercizi = (Spinner) findViewById(R.id.spinnerNomiEsercizi);
 
 
-        sab.setIndicator("Sab");
-        sab.getTag();
-        sab.setContent(intent);
-        //intent.putExtra("giorno", "Sab");
+        ArrayAdapter<String> array = new ArrayAdapter<String>(AggiungiEserciziActivity.this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.NomiEsercizi));array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerNomiEsercizi.setAdapter(array);
+        spinnerNomiEsercizi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-        tabHost.addTab(lun);
-        tabHost.addTab(mar);
-        tabHost.addTab(mer);
-        tabHost.addTab(gio);
-        tabHost.addTab(ven);
-        tabHost.addTab(sab);
+
+            @Override
+
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                nomeEsercizioAggiunto = (String) spinnerNomiEsercizi.getSelectedItem();
+            }
+
+
+            @Override
+
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        buttonAggiungi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                numeroVascheAggiunte = Integer.parseInt(editTextNumeroVasche.getText().toString());
+                archivio.addEsercizio(idNuotatore, weekday, nomeEsercizioAggiunto, numeroVascheAggiunte);
+                Intent intent =new Intent(AggiungiEserciziActivity.this, ListaEserciziActivity.class);
+                startActivity(intent);
+
+            }
+        });
+        buttonAnnulla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent =new Intent(AggiungiEserciziActivity.this, ListaEserciziActivity.class);
+                startActivity(intent);
+
+            }
+        });
     }
+}
 
 
-
-    }
 

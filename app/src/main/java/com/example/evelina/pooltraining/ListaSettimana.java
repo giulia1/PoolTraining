@@ -12,6 +12,7 @@ public class ListaSettimana extends AppCompatActivity {
     private ListView list;
     private String []nome={"Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì", "Sabato","Domenica"};
     private String idNuotatore;
+    private String giorno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class ListaSettimana extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent esercizi=new Intent(getApplicationContext(), ListaEserciziActivity.class);
-                String giorno=list.getItemAtPosition(position).toString();
+                 giorno=list.getItemAtPosition(position).toString();
                 esercizi.putExtra("giorno", giorno);
                 esercizi.putExtra("idNuotatore", idNuotatore);
                 startActivity(esercizi);

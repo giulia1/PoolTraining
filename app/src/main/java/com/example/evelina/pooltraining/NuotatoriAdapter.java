@@ -57,8 +57,8 @@ public class NuotatoriAdapter extends BaseAdapter {
 
         // Imposto i valori da visualizzare
         Nuotatori nuotatore = nuotatori.get(position);
-        textCognomeNuotatore.setText(nuotatore.getCognomeNuotatore());
-        textNomeNuotatore.setText(nuotatore.getNomeNuotatore());
+        textCognomeNuotatore.setText(nuotatore.getCognome());
+        textNomeNuotatore.setText(nuotatore.getNome());
 
 
         return convertView;
