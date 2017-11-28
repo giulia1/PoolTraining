@@ -16,9 +16,16 @@
 
     <TextView
         android:id="@+id/textViewNVascheAggiunte"
-        android:layout_width="108dp"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
+        android:text="TextView"
+        android:layout_weight="0.25" />
+
+    <TextView
+        android:id="@+id/textViewVasche1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="TextView" />
+        android:text="Vasche" />
 
 </LinearLayout>

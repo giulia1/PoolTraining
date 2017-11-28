@@ -20,10 +20,14 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ListaSettimana" />
-        <activity android:name=".ListaEserciziActivity" />
-        <activity android:name=".ListaNuotatori" />
-        <activity android:name=".AggiungiNuotatoreActivity" />
-        <activity android:name=".AggiungiEserciziActivity" />
+        <activity android:name=".ListaEserciziActivity"
+            android:label="Esercizi"/>
+        <activity android:name=".ListaNuotatoriActivity"
+            android:label="I miei nuotatori"/>
+        <activity android:name=".AggiungiNuotatoreActivity"
+            android:label="Nuotatori Liberi"/>
+        <activity android:name=".AggiungiEserciziActivity"
+            android:label ="Nuovo Esercizio"/>
         <activity android:name=".GiornoActivity"></activity>
     </application>
 
