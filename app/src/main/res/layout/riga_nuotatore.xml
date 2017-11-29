@@ -11,13 +11,15 @@
         android:id="@+id/textViewNomeNuotatore"
         android:layout_width="119dp"
         android:layout_height="27dp"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:id="@+id/textViewCognomeNuotatore"
         android:layout_width="108dp"
         android:layout_height="48dp"
         android:layout_weight="0.27"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@android:color/black"/>
 
-</LinearLayout>
+    </LinearLayout>

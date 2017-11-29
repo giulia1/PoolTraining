@@ -9,11 +9,13 @@
         android:id="@+id/textNomeNuotatoreLibero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:textColor="@android:color/black"/>
 
     <TextView
         android:id="@+id/textCognomeNuotatoreLibero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:textColor="@android:color/black"/>
 </LinearLayout>

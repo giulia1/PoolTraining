@@ -9,13 +9,14 @@
         android:id="@+id/textViewNuovoNumeroVasche"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginLeft="63dp"
+        android:layout_marginStart="63dp"
+        android:text="Numero Vasche:"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="21dp"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="44dp"
-        android:text="Numero Vasche:" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Spinner
         android:id="@+id/spinnerNumeriVasche"
@@ -31,22 +32,22 @@
         android:id="@+id/buttonConfermaModifica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="51dp"
+        android:layout_marginRight="51dp"
+        android:text="Conferma"
+        android:layout_alignBaseline="@+id/buttonAnnullaModifica"
+        android:layout_alignBottom="@+id/buttonAnnullaModifica"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/spinnerNumeriVasche"
-        android:layout_marginEnd="53dp"
-        android:layout_marginRight="53dp"
-        android:layout_marginTop="22dp"
-        android:text="Conferma" />
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:id="@+id/buttonAnnullaModifica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/buttonConfermaModifica"
-        android:layout_alignBottom="@+id/buttonConfermaModifica"
-        android:layout_alignLeft="@+id/spinnerNumeriVasche"
-        android:layout_alignStart="@+id/spinnerNumeriVasche"
-        android:text="Annulla" />
+        android:text="Annulla"
+        android:layout_below="@+id/spinnerNumeriVasche"
+        android:layout_alignLeft="@+id/textViewNuovoNumeroVasche"
+        android:layout_alignStart="@+id/textViewNuovoNumeroVasche"
+        android:layout_marginTop="42dp" />
 
     </RelativeLayout >

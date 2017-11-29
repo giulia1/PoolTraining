@@ -26,18 +26,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:layout_alignBottom="@+id/buttonLogout"
+        android:layout_marginEnd="31dp"
+        android:layout_marginRight="31dp"
+        android:layout_toLeftOf="@+id/buttonLogout"
+        android:layout_toStartOf="@+id/buttonLogout"
         android:clickable="true"
-        app:backgroundTint="@android:color/holo_blue_dark"
+        app:backgroundTint="@color/colorAccent"
         app:elevation="0dp"
         app:fabSize="mini"
         app:srcCompat="@android:drawable/ic_input_add"
         tools:layout_editor_absoluteX="328dp"
-        tools:layout_editor_absoluteY="455dp"
-        android:layout_marginRight="31dp"
-        android:layout_marginEnd="31dp"
-        android:layout_alignBottom="@+id/buttonLogout"
-        android:layout_toLeftOf="@+id/buttonLogout"
-        android:layout_toStartOf="@+id/buttonLogout" />
+        tools:layout_editor_absoluteY="455dp" />
 
     <ImageButton
         android:id="@+id/buttonLogout"

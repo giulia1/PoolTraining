@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/flat12"
+    android:background="@drawable/blu1"
     tools:context="com.example.evelina.pooltraining.AggiungiEserciziActivity">
 
     <TextView
         android:id="@+id/textViewNomeNuovoEsercizio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nome Esercizio"
-        android:layout_marginTop="48dp"
-        android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/textViewNumeroVasche"
-        android:layout_alignStart="@+id/textViewNumeroVasche" />
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textViewNumeroVasche"
+        android:layout_marginTop="48dp"
+        android:background="@android:color/background_light"
+        android:text="Nome Esercizio"
+        android:textColor="@android:color/black" />
 
     <Spinner
         android:id="@+id/spinnerNomiEsercizi"
@@ -25,7 +27,8 @@
         android:layout_marginLeft="46dp"
         android:layout_marginStart="46dp"
         android:layout_toEndOf="@+id/textViewNomeNuovoEsercizio"
-        android:layout_toRightOf="@+id/textViewNomeNuovoEsercizio" />
+        android:layout_toRightOf="@+id/textViewNomeNuovoEsercizio"
+        />
 
     <TextView
         android:id="@+id/textViewNumeroVasche"
@@ -37,7 +40,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp" />
+        android:layout_marginStart="10dp"
+        android:textColor="@android:color/black"
+        android:background="@android:color/background_light"/>
 
     <EditText
         android:id="@+id/editTextNumeroVasche"
@@ -49,7 +54,8 @@
         android:layout_toRightOf="@+id/textViewNumeroVasche"
         android:layout_toEndOf="@+id/textViewNumeroVasche"
         android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp" />
+        android:layout_marginStart="24dp"
+        android:textColor="@android:color/black"/>
 
     <Button
         android:id="@+id/buttonAggiungiEsercizio"
@@ -59,7 +65,8 @@
         android:layout_alignBaseline="@+id/buttonAnnullaModifica"
         android:layout_alignBottom="@+id/buttonAnnullaModifica"
         android:layout_alignRight="@+id/editTextNumeroVasche"
-        android:layout_alignEnd="@+id/editTextNumeroVasche" />
+        android:layout_alignEnd="@+id/editTextNumeroVasche"
+        />
 
     <Button
         android:id="@+id/buttonAnnullaModifica"
