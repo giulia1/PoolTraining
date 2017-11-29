@@ -28,7 +28,7 @@ public class ListaSettimana extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent esercizi=new Intent(getApplicationContext(), ListaEserciziActivity.class);
+                Intent esercizi=new Intent(ListaSettimana.this, ListaEserciziActivity.class);
                  giorno=list.getItemAtPosition(position).toString();
                 esercizi.putExtra("giorno", giorno);
                 esercizi.putExtra("idNuotatore", idNuotatore);

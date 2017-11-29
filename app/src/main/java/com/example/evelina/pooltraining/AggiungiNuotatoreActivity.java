@@ -50,8 +50,9 @@ public class AggiungiNuotatoreActivity extends AppCompatActivity {
                 Nuotatori n=new Nuotatori(nome,cognome);
                 idNuotatore=archivio.idNuotatoriLiberi.get(position);
                 archivio.addNuotatoreLista(n,idAllenatore, idNuotatore);
-                Intent listaNuotatori=new Intent(getApplicationContext(), ListaNuotatoriActivity.class);
-                startActivity(listaNuotatori);
+                //Intent listaNuotatori=new Intent(AggiungiNuotatoreActivity.this, ListaNuotatoriActivity.class);
+                //startActivity(listaNuotatori);
+                finish();
 
             }
         });

@@ -33,6 +33,7 @@ public class ListaNuotatoriActivity extends AppCompatActivity  implements PopupM
     private FirebaseAuth mAuth;
     private String idNuotatore;
 
+    int posizione;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -59,7 +60,7 @@ public class ListaNuotatoriActivity extends AppCompatActivity  implements PopupM
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 idNuotatore = archivio.idNuotatori.get(position);
-                Intent listaSettimana = new Intent(getApplicationContext(), ListaSettimana.class);
+                Intent listaSettimana = new Intent(view.getContext(), ListaSettimana.class);
                 listaSettimana.putExtra("idNuotatore", idNuotatore);
                 startActivity(listaSettimana);
 
@@ -69,15 +70,15 @@ public class ListaNuotatoriActivity extends AppCompatActivity  implements PopupM
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 showPopup(view);
-
-                return false;
+                posizione = position;
+                return true;
             }
         });
         aggiungi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent aggiungiNuotatori = new Intent(getApplicationContext(), AggiungiNuotatoreActivity.class);
+                Intent aggiungiNuotatori = new Intent(v.getContext(), AggiungiNuotatoreActivity.class);
                 aggiungiNuotatori.putExtra("chiave", idAllenatore);
                 startActivity(aggiungiNuotatori);
 
@@ -125,6 +126,7 @@ public class ListaNuotatoriActivity extends AppCompatActivity  implements PopupM
             case R.id.Cancella:
                 Toast toast2 = Toast.makeText(context, "Nuotatore cancellato", Toast.LENGTH_SHORT);
                 toast2.show();
+                idNuotatore = archivio.idNuotatori.get(posizione);
                 archivio.rimuoviNuotatore(idNuotatore, idAllenatore);
 
 

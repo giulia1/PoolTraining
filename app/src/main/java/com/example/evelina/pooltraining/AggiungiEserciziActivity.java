@@ -81,8 +81,7 @@ public class AggiungiEserciziActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent =new Intent(AggiungiEserciziActivity.this, ListaEserciziActivity.class);
-                startActivity(intent);
+                finish();
 
             }
         });

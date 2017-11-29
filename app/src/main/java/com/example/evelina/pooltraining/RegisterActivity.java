@@ -130,12 +130,11 @@ public class RegisterActivity extends AppCompatActivity {
                     Allenatori a = new Allenatori(nomeField.getText().toString(), cognomeField.getText().toString());
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference myRef = database.getReference("Allenatori");
-                    //archivio.addAllenatoreDB(a);
                     myRef.child(task.getResult().getUser().getUid()).setValue(a);
                     Log.d("log", "createUserWithEmail:success");
                     Toast.makeText(RegisterActivity.this, "Registrazione completata con successo", Toast.LENGTH_SHORT).show();
-                    //Intent login = new Intent(getApplicationContext(), MainActivity.class);
-                    //startActivity(login);
+                    Intent login = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(login);
 
                 }
                 else {

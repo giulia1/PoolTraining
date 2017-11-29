@@ -37,7 +37,9 @@ public class ListaEserciziActivity extends AppCompatActivity implements PopupMen
     private Spinner numeriVasche;
     private Button confermaModifica;
     private Button annullaModifica;
-    private  AlertDialog alertDialog;
+    private  AlertDialog dialog;
+    private AlertDialog.Builder builder;
+
 
 
 
@@ -54,33 +56,9 @@ public class ListaEserciziActivity extends AppCompatActivity implements PopupMen
         listaEsercizi = (ListView) findViewById(R.id.listaEsercizi);
         buttonAggiungiEse = (FloatingActionButton) findViewById(R.id.floatingActionButtonAggiungiEse);
         nuovoNumeroVasche=(TextView) findViewById(R.id.textViewNuovoNumeroVasche) ;
-        numeriVasche =(Spinner)findViewById(R.id.spinnerNumeriVasche);
-        confermaModifica=(Button) findViewById(R.id.buttonConfermaModifica);
-        annullaModifica=(Button) findViewById(R.id.buttonAnnullaModifica);
-
-       /*ArrayAdapter<String> array = new ArrayAdapter<String>(ListaEserciziActivity.this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.NumeroVasche));array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        numeriVasche.setAdapter(array);
-        numeriVasche.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-
-            @Override
-
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-              numeroModificato = Integer.parseInt((String) numeriVasche.getSelectedItem());
-           }
-
-
-            @Override
-
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });*/
 
         adapter = new EserciziAdapter(this);
         buttonAggiungiEse.setOnClickListener(new View.OnClickListener()
-
         {
             @Override
             public void onClick(View v) {
@@ -96,7 +74,7 @@ public class ListaEserciziActivity extends AppCompatActivity implements PopupMen
                 idEsercizio=archivio.idEsercizi.get(position);
                 showPopup(view);
 
-                return false;
+                return true;
             }
         });
 
@@ -134,29 +112,56 @@ public class ListaEserciziActivity extends AppCompatActivity implements PopupMen
         switch (item.getItemId()) {
 
             case R.id.Modifica:
-               /* LayoutInflater li = LayoutInflater.from(context);
-                View promptsView = li.inflate(R.layout.modifica_nvasche, null);
-                AlertDialog.Builder builder = new AlertDialog.Builder(ListaEserciziActivity.this);
-                builder.setView(promptsView);
-              confermaModifica.setOnClickListener(new View.OnClickListener() {
-                                                         @Override
-                                                         public void onClick(View v) {
+                AlertDialog.Builder builder= new AlertDialog.Builder(ListaEserciziActivity.this);
+                LayoutInflater li = LayoutInflater.from(context);
+                View dialogView = li.inflate(R.layout.modifica_nvasche, null);
+                confermaModifica=(Button)dialogView.findViewById(R.id.buttonConfermaModifica);
+                annullaModifica=(Button)dialogView.findViewById(R.id.buttonAnnullaModifica);
+                numeriVasche =(Spinner)dialogView.findViewById(R.id.spinnerNumeriVasche);
 
-                                                             archivio.modificaEsercizio(idNuotatore, idEsercizio, weekday, numeroModificato);
+                ArrayAdapter<String> array = new ArrayAdapter<String>(ListaEserciziActivity.this, android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.NumeroVasche));array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                numeriVasche.setAdapter(array);
+                numeriVasche.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        numeroModificato = Integer.parseInt((String) numeriVasche.getSelectedItem());
+                    }
+                    @Override
 
-                                                         }
-                                                     }
-                );
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+
+                builder.setView(dialogView);
+
+                dialog = builder.create();
+                dialog.show();
+
+                confermaModifica.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        archivio.modificaEsercizio(idNuotatore, idEsercizio, weekday, numeroModificato);
+                        dialog.dismiss();
+                    }
+
+
+                });
+
+
+
+
+
+
                 annullaModifica.setOnClickListener((new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        alertDialog.dismiss();
+                        dialog.dismiss();
                     }
 
                 }));
-
-                alertDialog = builder.create();
-                alertDialog.show();*/
 
                 return true;
             case R.id.Cancella:
